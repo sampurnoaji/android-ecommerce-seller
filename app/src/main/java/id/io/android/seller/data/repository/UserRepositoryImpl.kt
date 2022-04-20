@@ -11,6 +11,12 @@ class UserRepositoryImpl @Inject constructor(
     private val remoteDataSource: UserRemoteDataSource
 ) : UserRepository {
 
+    override fun setLoggedIn(isLoggedIn: Boolean) {
+        localDataSource.setLoggedIn(isLoggedIn)
+    }
+
+    override fun isLoggedIn(): Boolean = localDataSource.isLoggedIn()
+
     override suspend fun getUser(id: Int): User {
         return localDataSource.getUser()?.toDomain() ?: remoteDataSource.getUser(id).toDomain()
     }
