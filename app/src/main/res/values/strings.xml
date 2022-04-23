@@ -2,4 +2,6 @@
     <string name="menu_home">Beranda</string>
     <string name="menu_order">Pesanan</string>
     <string name="menu_product">Produk</string>
+
+    <string name="dashboard_order_new">Pesanan Baru</string>
 </resources>
