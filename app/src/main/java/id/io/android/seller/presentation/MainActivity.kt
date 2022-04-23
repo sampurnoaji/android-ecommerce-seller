@@ -11,6 +11,7 @@ import id.io.android.seller.core.BaseActivity
 import id.io.android.seller.databinding.ActivityMainBinding
 import id.io.android.seller.presentation.order.OrderFragment
 import id.io.android.seller.presentation.product.ProductFragment
+import id.io.android.seller.presentation.user.account.AccountFragment
 import id.io.android.seller.presentation.user.home.HomeFragment
 import id.io.android.seller.presentation.user.login.LoginActivity
 import id.io.android.seller.util.LoadState
@@ -25,6 +26,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private val homeFragment by lazy { HomeFragment() }
     private val orderFragment by lazy { OrderFragment() }
     private val productFragment by lazy { ProductFragment() }
+    private val accountFragment by lazy { AccountFragment() }
     private var currentFragment: Fragment = homeFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +49,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 }
                 R.id.menuProduct -> {
                     showFragment(productFragment)
+                    true
+                }
+                R.id.menuAccount -> {
+                    showFragment(accountFragment)
                     true
                 }
                 else -> false

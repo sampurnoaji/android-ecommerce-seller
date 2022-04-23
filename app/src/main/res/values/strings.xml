@@ -2,6 +2,13 @@
     <string name="menu_home">Beranda</string>
     <string name="menu_order">Pesanan</string>
     <string name="menu_product">Produk</string>
+    <string name="menu_account">Akun</string>
+
+    <string name="out">Keluar</string>
+    <string name="cancel">Batal</string>
 
     <string name="dashboard_order_new">Pesanan Baru</string>
+
+    <string name="logout">Keluar</string>
+    <string name="logout_message">Apakah Anda ingin keluar akun?</string>
 </resources>
