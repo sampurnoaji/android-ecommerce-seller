@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import dagger.hilt.android.lifecycle.HiltViewModel
-import id.io.android.seller.domain.model.User
+import id.io.android.seller.domain.model.user.User
 import id.io.android.seller.domain.usecase.user.UserUseCases
 import id.io.android.seller.util.LoadState
 import id.io.android.seller.util.LoadStateUtil

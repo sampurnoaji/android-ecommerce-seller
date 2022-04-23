@@ -13,7 +13,6 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:title="@string/menu_home" />
@@ -43,7 +42,7 @@
                 android:id="@+id/card2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:cardTitle="@string/dashboard_order_new"
+                app:cardTitle="Diproses"
                 app:layout_constraintEnd_toStartOf="@+id/card3"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/card1"
@@ -53,7 +52,7 @@
                 android:id="@+id/card3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:cardTitle="@string/dashboard_order_new"
+                app:cardTitle="Komplain"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/card2"

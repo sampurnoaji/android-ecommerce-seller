@@ -1,6 +1,6 @@
 package id.io.android.seller.domain.repository
 
-import id.io.android.seller.domain.model.User
+import id.io.android.seller.domain.model.user.User
 
 interface UserRepository {
     fun setLoggedIn(isLoggedIn: Boolean)

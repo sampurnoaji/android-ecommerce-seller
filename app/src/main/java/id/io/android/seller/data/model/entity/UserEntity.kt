@@ -3,7 +3,7 @@ package id.io.android.seller.data.model.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import id.io.android.seller.domain.model.User
+import id.io.android.seller.domain.model.user.User
 
 @Entity
 data class UserEntity(

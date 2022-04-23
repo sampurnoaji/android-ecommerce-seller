@@ -2,7 +2,7 @@ package id.io.android.seller.data.model.response
 
 
 import com.squareup.moshi.Json
-import id.io.android.seller.domain.model.User
+import id.io.android.seller.domain.model.user.User
 
 data class UserResponse(
     @field:Json(name = "data")
