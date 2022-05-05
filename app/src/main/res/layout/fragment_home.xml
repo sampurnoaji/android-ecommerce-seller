@@ -32,7 +32,7 @@
                 android:id="@+id/card1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:cardTitle="@string/dashboard_order_new"
+                app:cardTitle="@string/home_order_new"
                 app:layout_constraintEnd_toStartOf="@+id/card2"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"

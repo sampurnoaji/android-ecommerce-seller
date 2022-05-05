@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="4dp"
+    android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+    android:textSize="11sp"
+    tools:background="@drawable/chip_order_status_green"
+    tools:text="Dikirim"
+    tools:textColor="@color/green_primary" />

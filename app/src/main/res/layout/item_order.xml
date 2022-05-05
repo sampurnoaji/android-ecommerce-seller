@@ -27,10 +27,24 @@
             android:paddingEnd="0dp"
             android:textAppearance="@style/TextAppearance.Material3.BodySmall"
             android:textColor="@color/white"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/tvCustomerName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="#ID12345" />
+
+        <id.io.android.seller.component.StatusChipView
+            android:id="@+id/chipStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="0dp"
+            android:text="Dikirim"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCustomerName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:status="1" />
 
         <TextView
             android:id="@+id/tvCustomerName"
@@ -40,7 +54,7 @@
             android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
             android:textColor="@color/white"
             app:layout_constraintEnd_toStartOf="@+id/tvDate"
-            app:layout_constraintStart_toEndOf="@+id/tvId"
+            app:layout_constraintStart_toEndOf="@+id/chipStatus"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Muhammad" />
 

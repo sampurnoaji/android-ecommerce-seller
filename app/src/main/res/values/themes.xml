@@ -14,4 +14,12 @@
         <!-- Customize your theme here. -->
         <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.Surface</item>
     </style>
+
+    <style name="TextView" parent="Widget.AppCompat.TextView">
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="TextView.ChipStatus">
+        <item name="android:textSize">@dimen/text_10</item>
+    </style>
 </resources>

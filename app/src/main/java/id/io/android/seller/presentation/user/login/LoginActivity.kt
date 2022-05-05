@@ -7,6 +7,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.io.android.seller.core.BaseActivity
 import id.io.android.seller.databinding.ActivityLoginBinding
 import id.io.android.seller.presentation.MainActivity
+import id.io.android.seller.presentation.user.register.RegisterActivity
 import id.io.android.seller.util.viewBinding
 
 @AndroidEntryPoint
@@ -26,6 +27,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        binding.tvRegister.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 }
