@@ -6,6 +6,7 @@
 
     <string name="out">Keluar</string>
     <string name="cancel">Batal</string>
+    <string name="verify">Verifikasi</string>
 
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -16,11 +17,19 @@
     <string name="login">Login</string>
     <string name="login_underline"><u>Login</u></string>
     <string name="login_header">Masuk ke Toko!</string>
+    <string name="login_error_password_length">Password minimal 6 digit</string>
 
     <string name="register">Daftar</string>
     <string name="register_underline"><u>Daftar</u></string>
     <string name="register_header">Daftarkan Tokomu!</string>
+    <string name="register_desc">Masukkan informasi awal akun Tokomu</string>
     <string name="register_success">Tokomu berhasil didaftarkan, silakan login!</string>
+    <string name="register_error_fill_form">Lengkapi informasi akun</string>
+
+    <string name="otp_title">Input OTP</string>
+    <string name="otp_header">Masukkan kode OTP di email</string>
+    <string name="otp_desc">Cek folder kotak masuk di emailmu, jangan lupa cek folder spam juga ya!</string>
+    <string name="otp_error_six_digit">OTP harus 6 digit</string>
 
     <string name="logout">Keluar</string>
     <string name="logout_message">Apakah Anda ingin keluar akun?</string>
