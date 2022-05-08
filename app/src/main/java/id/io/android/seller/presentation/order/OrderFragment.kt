@@ -2,6 +2,7 @@ package id.io.android.seller.presentation.order
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.children
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import id.io.android.seller.R
@@ -22,55 +23,32 @@ class OrderFragment : BaseFragment<FragmentOrderBinding, OrderViewModel>(R.layou
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupOrderList()
+        setupActionView()
+
+        observeOrders()
+    }
+
+    private fun setupActionView() {
+        binding.refreshLayout.setOnRefreshListener {
+            binding.refreshLayout.isRefreshing = false
+        }
+        binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
+            group.children.forEachIndexed { index, child ->
+                if (child.id == checkedId) {
+                    vm.filterOrders(index)
+                }
+                return@forEachIndexed
+            }
+        }
     }
 
     private fun setupOrderList() {
         binding.rvOrders.adapter = orderListAdapter
-        orderListAdapter.submitList(orders)
     }
 
-    private val orders by lazy {
-        listOf(
-            Order(
-                id = "#ID12345",
-                customerName = "Rendi Uhuy",
-                date = "22 Mei 2022",
-                total = 300500,
-                products = mapOf(
-                    2 to Product(id = 1, name = "Minyak Wangi"),
-                    1 to Product(id = 1, name = "Spring Bed"),
-                )
-            ),
-            Order(
-                id = "#ID12345",
-                customerName = "Noge Ahay",
-                date = "22 Mei 2022",
-                total = 300500,
-                products = mapOf(
-                    2 to Product(id = 1, name = "Bantal"),
-                    1 to Product(id = 1, name = "Sarung"),
-                )
-            ),
-            Order(
-                id = "#ID12345",
-                customerName = "Bach Coy",
-                date = "22 Mei 2022",
-                total = 300500,
-                products = mapOf(
-                    2 to Product(id = 1, name = "Yak"),
-                    1 to Product(id = 1, name = "NOwindoinfuinriufnir"),
-                )
-            ),
-            Order(
-                id = "#ID12345",
-                customerName = "Bach Coy",
-                date = "22 Mei 2022",
-                total = 300500,
-                products = mapOf(
-                    2 to Product(id = 1, name = "Yak"),
-                    1 to Product(id = 1, name = "NOwindoinfuinriufnir"),
-                )
-            )
-        )
+    private fun observeOrders() {
+        vm.orders.observe(viewLifecycleOwner) {
+            orderListAdapter.submitList(it)
+        }
     }
 }

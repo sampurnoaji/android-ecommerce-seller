@@ -12,51 +12,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@android:color/darker_gray"
-            app:layout_constraintBottom_toBottomOf="@+id/tvCustomerName"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/tvId"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_dark"
+            android:paddingVertical="8dp"
             android:paddingStart="16dp"
             android:paddingEnd="0dp"
             android:textAppearance="@style/TextAppearance.Material3.BodySmall"
             android:textColor="@color/white"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/tvCustomerName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="#ID12345" />
-
-        <id.io.android.seller.component.StatusChipView
-            android:id="@+id/chipStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="16dp"
-            android:paddingEnd="0dp"
-            android:text="Dikirim"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="@+id/tvCustomerName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:status="1" />
 
         <TextView
             android:id="@+id/tvCustomerName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
             android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@+id/tvDate"
-            app:layout_constraintStart_toEndOf="@+id/chipStatus"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Muhammad" />
+            app:layout_constraintEnd_toStartOf="@+id/labelTotal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvId"
+            tools:text="Joko Bejo Joko Bejo Joko Bejo Joko Bejo" />
 
         <TextView
             android:id="@+id/tvDate"
@@ -66,9 +48,9 @@
             android:paddingEnd="16dp"
             android:textAppearance="@style/TextAppearance.Material3.BodySmall"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/tvCustomerName"
+            app:layout_constraintBottom_toBottomOf="@+id/tvId"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvId"
             tools:text="14 Des 2022" />
 
         <TextView
@@ -76,10 +58,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="16dp"
-            android:text="Total"
-            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+            android:text="@string/total"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             app:layout_constraintBottom_toBottomOf="@+id/tvTotal"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvTotal"
             app:layout_constraintTop_toTopOf="@+id/tvTotal" />
 
         <TextView
@@ -90,7 +72,7 @@
             android:paddingVertical="8dp"
             android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvCustomerName"
+            app:layout_constraintTop_toBottomOf="@+id/tvId"
             tools:text="Rp 167.000" />
 
         <View
@@ -106,7 +88,7 @@
             android:lineSpacingExtra="4dp"
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
-            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
             app:layout_constraintTop_toBottomOf="@+id/tvTotal"
             tools:text="1 x Roti Bakar\n2 x Martaboy Telur" />
     </androidx.constraintlayout.widget.ConstraintLayout>

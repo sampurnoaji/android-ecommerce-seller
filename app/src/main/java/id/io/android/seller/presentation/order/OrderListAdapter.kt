@@ -2,6 +2,7 @@ package id.io.android.seller.presentation.order
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -20,17 +21,23 @@ class OrderListAdapter : ListAdapter<Order, OrderListAdapter.ViewHolder>(OrderDi
         holder.bind(getItem(position))
     }
 
-    class ViewHolder(private val binding: ItemOrderBinding): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemOrderBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(order: Order) {
             with(binding) {
-                tvId.text = order.id
+                tvId.apply {
+                    text = order.id
+                    setBackgroundColor(ContextCompat.getColor(context, order.status.color))
+                }
                 tvCustomerName.text = order.customerName
                 tvDate.text = order.date
                 tvTotal.text = "Rp ${order.total}"
 
                 var products = ""
-                for (product in order.products) {
-                    products += "${product.key} x ${product.value.name}\n"
+                order.products.onEachIndexed { index, product ->
+                    products +=
+                        if (index + 1 >= order.products.size) "${product.key} x ${product.value.name}"
+                        else "${product.key} x ${product.value.name}\n"
                 }
                 tvProducts.text = products
             }
