@@ -47,7 +47,7 @@ class OrderViewModel @Inject constructor() : ViewModel() {
                 status = Order.Status.NEW,
                 customerName = "Rendi Uhuy",
                 date = "22 Mei 2022",
-                total = 300500,
+                total = 3005007,
                 products = mapOf(
                     2 to Product(id = 1, name = "Minyak Wangi"),
                     1 to Product(id = 1, name = "Spring Bed"),
