@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import id.io.android.seller.databinding.ItemOrderBinding
 import id.io.android.seller.domain.model.order.Order
 import id.io.android.seller.util.addThousandSeparator
-import java.text.NumberFormat
-import java.util.Locale
 
 class OrderListAdapter : ListAdapter<Order, OrderListAdapter.ViewHolder>(OrderDiffCallback) {
 
@@ -34,7 +32,6 @@ class OrderListAdapter : ListAdapter<Order, OrderListAdapter.ViewHolder>(OrderDi
                 }
                 tvCustomerName.text = order.customerName
                 tvDate.text = order.date
-                val nf = NumberFormat.getInstance(Locale("id", "ID"))
                 tvTotal.text = "Rp ${order.total.addThousandSeparator()}"
 
                 var products = ""

@@ -49,8 +49,20 @@ class OrderViewModel @Inject constructor() : ViewModel() {
                 date = "22 Mei 2022",
                 total = 3005007,
                 products = mapOf(
-                    2 to Product(id = 1, name = "Minyak Wangi"),
-                    1 to Product(id = 1, name = "Spring Bed"),
+                    2 to Product(
+                        id = 1,
+                        name = "Penggaris",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = ""
+                    ),
+                    1 to Product(
+                        id = 1,
+                        name = "Penggaris",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = ""
+                    ),
                 )
             ),
             Order(
@@ -60,8 +72,20 @@ class OrderViewModel @Inject constructor() : ViewModel() {
                 date = "22 Mei 2022",
                 total = 300500,
                 products = mapOf(
-                    2 to Product(id = 1, name = "Bantal"),
-                    1 to Product(id = 1, name = "Sarung"),
+                    2 to Product(
+                        id = 1,
+                        name = "Penggaris",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = ""
+                    ),
+                    1 to Product(
+                        id = 1,
+                        name = "Penggaris",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = ""
+                    ),
                 )
             ),
             Order(
@@ -71,8 +95,20 @@ class OrderViewModel @Inject constructor() : ViewModel() {
                 date = "22 Mei 2022",
                 total = 300500,
                 products = mapOf(
-                    2 to Product(id = 1, name = "Yak"),
-                    1 to Product(id = 1, name = "NOwindoinfuinriufnir"),
+                    2 to Product(
+                        id = 1,
+                        name = "Penggaris",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = ""
+                    ),
+                    1 to Product(
+                        id = 1,
+                        name = "Penggaris",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = ""
+                    ),
                 )
             ),
             Order(
@@ -82,8 +118,20 @@ class OrderViewModel @Inject constructor() : ViewModel() {
                 date = "22 Mei 2022",
                 total = 300500,
                 products = mapOf(
-                    2 to Product(id = 1, name = "Yak"),
-                    1 to Product(id = 1, name = "NOwindoinfuinriufnir"),
+                    2 to Product(
+                        id = 1,
+                        name = "Penggaris",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = ""
+                    ),
+                    1 to Product(
+                        id = 1,
+                        name = "Penggaris",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = ""
+                    ),
                 )
             ),
             Order(
@@ -93,8 +141,20 @@ class OrderViewModel @Inject constructor() : ViewModel() {
                 date = "22 Mei 2022",
                 total = 300500,
                 products = mapOf(
-                    2 to Product(id = 1, name = "Yak"),
-                    1 to Product(id = 1, name = "NOwindoinfuinriufnir"),
+                    2 to Product(
+                        id = 1,
+                        name = "Penggaris",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = ""
+                    ),
+                    1 to Product(
+                        id = 1,
+                        name = "Penggaris",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = ""
+                    ),
                 )
             )
         )

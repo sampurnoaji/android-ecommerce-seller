@@ -41,4 +41,6 @@
 
     <string name="logout">Keluar</string>
     <string name="logout_message">Apakah Anda ingin keluar akun?</string>
+
+    <string name="product_stock_semicolon">Stok:</string>
 </resources>

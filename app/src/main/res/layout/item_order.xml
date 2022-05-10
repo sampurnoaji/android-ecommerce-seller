@@ -16,7 +16,6 @@
             android:id="@+id/tvId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/holo_blue_dark"
             android:paddingVertical="8dp"
             android:paddingStart="16dp"
             android:paddingEnd="0dp"
@@ -24,6 +23,7 @@
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:background="@android:color/darker_gray"
             tools:text="#ID12345" />
 
         <TextView
