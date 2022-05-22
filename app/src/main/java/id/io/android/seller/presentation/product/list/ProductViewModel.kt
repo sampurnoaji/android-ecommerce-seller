@@ -1,4 +1,4 @@
-package id.io.android.seller.presentation.product
+package id.io.android.seller.presentation.product.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

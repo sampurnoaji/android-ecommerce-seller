@@ -5,9 +5,15 @@
       <map>
         <entry key="app/src/main/res/drawable/chip_order_status.xml" value="0.2755" />
         <entry key="app/src/main/res/drawable/chip_order_status_red.xml" value="0.2755" />
+        <entry key="app/src/main/res/drawable/default_dot.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/dot_default.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/dot_selected.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/dot_selector.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/selected_dot.xml" value="0.1275" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23278985507246377" />
         <entry key="app/src/main/res/layout/activity_otp.xml" value="0.23278985507246377" />
+        <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.4244791666666667" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="app/src/main/res/layout/chip_order_status.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.335" />
@@ -17,6 +23,7 @@
         <entry key="app/src/main/res/layout/item_dashboard_card.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_order.xml" value="0.45" />
         <entry key="app/src/main/res/layout/item_product.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_product_image.xml" value="0.5" />
         <entry key="app/src/main/res/menu/menu_main_bottom_nav.xml" value="0.4244791666666667" />
       </map>
     </option>

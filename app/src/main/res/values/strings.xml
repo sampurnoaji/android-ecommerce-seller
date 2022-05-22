@@ -7,8 +7,11 @@
     <string name="out">Keluar</string>
     <string name="cancel">Batal</string>
     <string name="verify">Verifikasi</string>
+    <string name="delete">Hapus</string>
+    <string name="edit">Ubah</string>
 
     <string name="all">Semua</string>
+    <string name="detail">Detail</string>
 
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -42,5 +45,8 @@
     <string name="logout">Keluar</string>
     <string name="logout_message">Apakah Anda ingin keluar akun?</string>
 
+    <string name="product_desc">Deskripsi</string>
+    <string name="product_stock">Stok</string>
     <string name="product_stock_semicolon">Stok:</string>
+    <string name="product_price">Harga</string>
 </resources>

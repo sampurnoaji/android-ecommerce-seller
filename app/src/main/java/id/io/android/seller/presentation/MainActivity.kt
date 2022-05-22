@@ -10,11 +10,10 @@ import id.io.android.seller.R
 import id.io.android.seller.core.BaseActivity
 import id.io.android.seller.databinding.ActivityMainBinding
 import id.io.android.seller.presentation.order.OrderFragment
-import id.io.android.seller.presentation.product.ProductFragment
+import id.io.android.seller.presentation.product.list.ProductFragment
 import id.io.android.seller.presentation.user.account.AccountFragment
 import id.io.android.seller.presentation.user.home.HomeFragment
 import id.io.android.seller.presentation.user.login.LoginActivity
-import id.io.android.seller.util.LoadState
 import id.io.android.seller.util.viewBinding
 
 @AndroidEntryPoint
