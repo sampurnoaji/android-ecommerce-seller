@@ -9,9 +9,12 @@
     <string name="verify">Verifikasi</string>
     <string name="delete">Hapus</string>
     <string name="edit">Ubah</string>
+    <string name="view_more">Lihat selengkapnya</string>
 
     <string name="all">Semua</string>
     <string name="detail">Detail</string>
+
+    <string name="empty_data">Tidak ada data</string>
 
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -54,4 +57,5 @@
     <string name="product_price">Harga</string>
     <string name="product_search">Cari produk</string>
     <string name="product_add">Tambah produk</string>
+    <string name="product_sold_statistic">Statistik Produk Terjual</string>
 </resources>
