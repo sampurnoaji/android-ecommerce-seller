@@ -9,8 +9,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.io.android.seller.R
 import id.io.android.seller.core.BaseFragment
 import id.io.android.seller.databinding.FragmentOrderBinding
-import id.io.android.seller.domain.model.order.Order
-import id.io.android.seller.domain.model.product.Product
 import id.io.android.seller.util.viewBinding
 
 @AndroidEntryPoint
@@ -35,6 +33,7 @@ class OrderFragment : BaseFragment<FragmentOrderBinding, OrderViewModel>(R.layou
         }
 
         binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
+            requireActivity().currentFocus?.clearFocus()
             group.children.forEachIndexed { index, child ->
                 if (child.id == checkedId) {
                     vm.onCheckedChipChanged(index)

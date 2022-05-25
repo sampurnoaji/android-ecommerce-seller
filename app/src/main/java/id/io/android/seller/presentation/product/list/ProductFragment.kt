@@ -3,6 +3,7 @@ package id.io.android.seller.presentation.product.list
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import id.io.android.seller.R
@@ -33,8 +34,19 @@ class ProductFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupActionView()
         setupProductsList()
         observeProducts()
+    }
+
+    private fun setupActionView() {
+        binding.refreshLayout.setOnRefreshListener {
+            binding.refreshLayout.isRefreshing = false
+        }
+
+        binding.etSearch.doOnTextChanged { text, _, _, _ ->
+            vm.onQuerySearchChanged(text.toString())
+        }
     }
 
     private fun setupProductsList() {
