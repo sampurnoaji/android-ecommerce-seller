@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import id.io.android.seller.R
 import id.io.android.seller.core.BaseFragment
@@ -50,7 +51,10 @@ class ProductFragment :
     }
 
     private fun setupProductsList() {
-        binding.rvProducts.adapter = productListAdapter
+        with(binding.rvProducts) {
+            layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
+            adapter = productListAdapter
+        }
     }
 
     private fun observeProducts() {
