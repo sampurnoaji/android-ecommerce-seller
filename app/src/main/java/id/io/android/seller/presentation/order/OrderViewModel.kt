@@ -6,13 +6,14 @@ import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.io.android.seller.domain.model.order.Order
 import id.io.android.seller.domain.model.product.Product
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
 class OrderViewModel @Inject constructor() : ViewModel() {
 
     companion object {
-        private const val FILTER_ALL_INDEX = 0
+        const val FILTER_ALL_INDEX = 0
         private const val FILTER_NEW_INDEX = 1
         private const val FILTER_ONGOING_INDEX = 2
         private const val FILTER_FINISHED_INDEX = 3
@@ -23,12 +24,25 @@ class OrderViewModel @Inject constructor() : ViewModel() {
     val orders: LiveData<List<Order>>
         get() = _orders
 
+    private var checkedChipIndex = FILTER_ALL_INDEX
+    private var query = ""
+
     init {
         _orders.value = data()
     }
 
-    fun filterOrders(index: Int) {
-        val status: Order.Status? = when (index) {
+    fun onCheckedChipChanged(index: Int) {
+        checkedChipIndex = index
+        filterOrders()
+    }
+
+    fun onQuerySearchChanged(query: String) {
+        this.query = query
+        filterOrders()
+    }
+
+    private fun filterOrders() {
+        val status: Order.Status? = when (checkedChipIndex) {
             FILTER_NEW_INDEX -> Order.Status.NEW
             FILTER_ONGOING_INDEX -> Order.Status.ONGOING
             FILTER_FINISHED_INDEX -> Order.Status.FINISHED
@@ -36,8 +50,13 @@ class OrderViewModel @Inject constructor() : ViewModel() {
             else -> null
         }
         _orders.value =
-            if (status == null) data()
-            else data().filter { it.status == status }
+            (if (status == null) data()
+            else data().filter { it.status == status }).searchOrders()
+    }
+
+    private fun List<Order>.searchOrders(): List<Order> = filter {
+        it.customerName.lowercase(Locale.getDefault()).contains(query)
+                || it.date.lowercase(Locale.getDefault()).contains(query)
     }
 
     private fun data() =

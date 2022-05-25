@@ -3,6 +3,7 @@ package id.io.android.seller.presentation.order
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.children
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import id.io.android.seller.R
@@ -32,13 +33,18 @@ class OrderFragment : BaseFragment<FragmentOrderBinding, OrderViewModel>(R.layou
         binding.refreshLayout.setOnRefreshListener {
             binding.refreshLayout.isRefreshing = false
         }
+
         binding.chipGroup.setOnCheckedChangeListener { group, checkedId ->
             group.children.forEachIndexed { index, child ->
                 if (child.id == checkedId) {
-                    vm.filterOrders(index)
+                    vm.onCheckedChipChanged(index)
                 }
                 return@forEachIndexed
             }
+        }
+
+        binding.etSearch.doOnTextChanged { text, _, _, _ ->
+            vm.onQuerySearchChanged(text.toString())
         }
     }
 

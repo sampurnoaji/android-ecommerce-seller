@@ -22,6 +22,7 @@
     <string name="order_ongoing">Diproses</string>
     <string name="order_finished">Selesai</string>
     <string name="order_complained">Komplain</string>
+    <string name="order_search">Cari pesanan</string>
 
     <string name="home_order_new">Pesanan Baru</string>
 
