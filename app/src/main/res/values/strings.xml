@@ -15,7 +15,6 @@
 
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="shop_name">Nama Toko</string>
     <string name="total">Total</string>
 
     <string name="order_new">Baru</string>
@@ -45,6 +44,9 @@
 
     <string name="logout">Keluar</string>
     <string name="logout_message">Apakah Anda ingin keluar akun?</string>
+
+    <string name="shop">Toko</string>
+    <string name="shop_name">Nama Toko</string>
 
     <string name="product_desc">Deskripsi</string>
     <string name="product_stock">Stok</string>

@@ -8,14 +8,39 @@
     tools:context=".presentation.user.home.HomeFragment">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="@string/menu_home" />
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:collapsedTitleTextColor="@color/white"
+            app:expandedTitleGravity="top"
+            app:expandedTitleTextColor="@color/white"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:toolbarId="@+id/toolbar">
+
+            <ImageView
+                android:id="@+id/expandedImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:contentDescription="@string/shop_name"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background"
+                app:layout_collapseMode="parallax" />
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                app:layout_collapseMode="parallax"
+                app:titleTextColor="@color/white"
+                tools:title="@string/shop_name" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -33,6 +58,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:cardTitle="@string/home_order_new"
+                app:iconTint="@android:color/darker_gray"
                 app:layout_constraintEnd_toStartOf="@+id/card2"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +68,8 @@
                 android:id="@+id/card2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:cardTitle="Diproses"
+                app:cardTitle="@string/order_ongoing"
+                app:iconTint="@android:color/holo_blue_light"
                 app:layout_constraintEnd_toStartOf="@+id/card3"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/card1"
@@ -52,7 +79,8 @@
                 android:id="@+id/card3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:cardTitle="Komplain"
+                app:cardTitle="@string/order_complained"
+                app:iconTint="@color/red_primary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/card2"

@@ -17,7 +17,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupToolbar()
         setupDashBoardCard()
+    }
+
+    private fun setupToolbar() {
+        binding.toolbar.title = "Bejo Shop"
     }
 
     private fun setupDashBoardCard() {

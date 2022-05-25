@@ -21,8 +21,15 @@ class ItemDashboardCardView(context: Context, attrs: AttributeSet) :
             R.styleable.ItemDashboardCardView, 0, 0
         ).apply {
             try {
-                binding.tvTitle.text = getString(R.styleable.ItemDashboardCardView_cardTitle).orEmpty()
+                binding.tvTitle.text =
+                    getString(R.styleable.ItemDashboardCardView_cardTitle).orEmpty()
                 binding.tvValue.text = getString(R.styleable.ItemDashboardCardView_value).orEmpty()
+                binding.icon.setBackgroundColor(
+                    getInt(
+                        R.styleable.ItemDashboardCardView_iconTint,
+                        android.R.color.darker_gray
+                    )
+                )
             } finally {
                 recycle()
             }
