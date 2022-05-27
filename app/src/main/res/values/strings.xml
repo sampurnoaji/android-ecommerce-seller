@@ -27,6 +27,7 @@
     <string name="order_search">Cari pesanan</string>
 
     <string name="home_order_new">Pesanan Baru</string>
+    <string name="home_banner">Banner</string>
 
     <string name="login">Login</string>
     <string name="login_underline"><u>Login</u></string>

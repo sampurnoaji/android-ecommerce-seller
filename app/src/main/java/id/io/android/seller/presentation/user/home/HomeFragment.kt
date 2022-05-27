@@ -3,7 +3,11 @@ package id.io.android.seller.presentation.user.home
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.viewModels
+import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.ViewPager2.ORIENTATION_HORIZONTAL
+import coil.load
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
@@ -14,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.io.android.seller.R
 import id.io.android.seller.core.BaseFragment
 import id.io.android.seller.databinding.FragmentHomeBinding
+import id.io.android.seller.presentation.event.BannerListAdapter
 import id.io.android.seller.util.viewBinding
 
 @AndroidEntryPoint
@@ -22,11 +27,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     override val binding: FragmentHomeBinding by viewBinding(FragmentHomeBinding::bind)
     override val vm: HomeViewModel by viewModels()
 
+    private val bannerListAdapter by lazy { BannerListAdapter() }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
 
         setupDashBoardCard()
+        setupBannerList()
 
         initProductChart()
         setProductChartData()
@@ -34,6 +42,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
 
     private fun setupToolbar() {
         binding.toolbar.title = "Bejo Shop"
+        binding.expandedImage.load("https://picsum.photos/id/1043/5184/3456")
     }
 
     private fun setupDashBoardCard() {
@@ -42,15 +51,43 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         binding.card3.setValue("5")
     }
 
+    private fun setupBannerList() {
+        val banners = listOf(
+            "https://picsum.photos/id/1043/5184/3456",
+            "https://picsum.photos/id/1039/6945/4635",
+            "https://picsum.photos/id/1038/3914/5863",
+            "https://picsum.photos/id/1037/5760/3840",
+        )
+        with(binding.vpBanner) {
+            adapter = bannerListAdapter
+            clipToPadding = false
+            clipChildren = false
+            offscreenPageLimit = 2
+
+            val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.view_pager_page_margin)
+            val offsetPx = resources.getDimensionPixelOffset(R.dimen.view_pager_page_offset)
+
+            setPageTransformer { page, position ->
+                val viewPager = page.parent.parent as ViewPager2
+                val offset = position * -(2 * offsetPx + pageMarginPx)
+                if (viewPager.orientation == ORIENTATION_HORIZONTAL) {
+                    if (ViewCompat.getLayoutDirection(viewPager) == ViewCompat.LAYOUT_DIRECTION_RTL) {
+                        page.translationX = -offset
+                    } else {
+                        page.translationX = offset
+                    }
+                } else {
+                    page.translationY = offset
+                }
+            }
+        }
+        bannerListAdapter.submitList(banners)
+    }
+
     private fun initProductChart() {
         with(binding.productChart) {
             setNoDataText(getString(R.string.empty_data))
             setExtraOffsets(0f, 0f, 0f, 8f)
-
-//            axisLeft.apply {
-//                setDrawGridLines(true)
-//                valueFormatter = ShortRupiahValueFormatter()
-//            }
 
             axisRight.isEnabled = false
             legend.isEnabled = false

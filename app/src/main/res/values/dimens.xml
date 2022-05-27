@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_10">10sp</dimen>
+
+    <dimen name="dp16">48dp</dimen>
+
+    <dimen name="view_pager_page_margin">20dp</dimen>
+    <dimen name="view_pager_page_offset">30dp</dimen>
+    <dimen name="view_pager_page_margin_offset">50dp</dimen>
+
+    <dimen name="pageMargin">30dp</dimen>
+    <dimen name="offset">30dp</dimen>
+    <dimen name="pageMarginAndOffset">50dp</dimen>
+
+    <dimen name="next_item_visible_width">50dp</dimen>
+    <dimen name="viewpager_horizontal_margin">10dp</dimen>
 </resources>
