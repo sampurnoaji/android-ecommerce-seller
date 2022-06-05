@@ -4,6 +4,8 @@ import id.io.android.seller.data.source.local.UserLocalDataSource
 import id.io.android.seller.data.source.remote.UserRemoteDataSource
 import id.io.android.seller.domain.repository.UserRepository
 import id.io.android.seller.domain.model.user.User
+import id.io.android.seller.presentation.user.register.RegisterParams
+import id.io.android.seller.util.LoadState
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(
@@ -19,5 +21,9 @@ class UserRepositoryImpl @Inject constructor(
 
     override suspend fun getUser(id: Int): User {
         return localDataSource.getUser()?.toDomain() ?: remoteDataSource.getUser(id).toDomain()
+    }
+
+    override suspend fun register(registerParams: RegisterParams): LoadState<String> {
+        return remoteDataSource.register(registerParams)
     }
 }

@@ -1,4 +1,4 @@
-package id.io.android.seller.data.model.response
+package id.io.android.seller.data.model.response.user
 
 
 import com.squareup.moshi.Json

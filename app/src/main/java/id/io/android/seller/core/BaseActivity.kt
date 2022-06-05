@@ -1,11 +1,15 @@
 package id.io.android.seller.core
 
 import android.os.Bundle
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isVisible
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import id.io.android.seller.util.LoadState
 
 
 abstract class BaseActivity<B : ViewBinding, VM : ViewModel> : AppCompatActivity() {
@@ -49,5 +53,29 @@ abstract class BaseActivity<B : ViewBinding, VM : ViewModel> : AppCompatActivity
                 positiveAction()
             }
             .show()
+    }
+
+    fun <T> LiveData<LoadState<T>>.observe(
+        success: (T) -> Unit,
+        error: (String?) -> Unit,
+        loading: () -> Unit = {},
+        loadingProgressBar: ProgressBar? = null,
+    ) {
+        observe(this@BaseActivity) {
+            when (it) {
+                is LoadState.Loading -> {
+                    loading()
+                    loadingProgressBar?.isVisible = true
+                }
+                is LoadState.Success -> {
+                    success(it.data)
+                    loadingProgressBar?.isVisible = false
+                }
+                is LoadState.Error -> {
+                    error(it.message)
+                    loadingProgressBar?.isVisible = false
+                }
+            }
+        }
     }
 }

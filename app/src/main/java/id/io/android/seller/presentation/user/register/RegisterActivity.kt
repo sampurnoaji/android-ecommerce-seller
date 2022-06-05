@@ -1,6 +1,5 @@
 package id.io.android.seller.presentation.user.register
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -9,7 +8,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.io.android.seller.R
 import id.io.android.seller.core.BaseActivity
 import id.io.android.seller.databinding.ActivityRegisterBinding
-import id.io.android.seller.presentation.user.otp.OtpActivity
 import id.io.android.seller.util.UserConstant.PASSWORD_LENGTH
 import id.io.android.seller.util.viewBinding
 
@@ -23,15 +21,20 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
         super.onCreate(savedInstanceState)
         setupToolbar(binding.topAppBar, showHomeAsUp = true)
         setupActionView()
+        observeRegisterResult()
     }
 
     private fun setupActionView() {
-        binding.etUsername.doOnTextChanged { text, _, _, _ ->
-            vm.onUsernameChanged(text.toString())
+        binding.etEmail.doOnTextChanged { text, _, _, _ ->
+            vm.onEmailChanged(text.toString())
             binding.tvError.visibility = View.GONE
         }
-        binding.etShopName.doOnTextChanged { text, _, _, _ ->
-            vm.onShopNameChanged(text.toString())
+        binding.etName.doOnTextChanged { text, _, _, _ ->
+            vm.onNameChanged(text.toString())
+            binding.tvError.visibility = View.GONE
+        }
+        binding.etPhoneNumber.doOnTextChanged { text, _, _, _ ->
+            vm.onPhoneNumberChanged(text.toString())
             binding.tvError.visibility = View.GONE
         }
         binding.etPassword.doOnTextChanged { text, _, _, _ ->
@@ -40,11 +43,15 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
         }
 
         binding.btnRegister.setOnClickListener {
-            if (vm.username.isEmpty()) {
+            if (vm.email.isEmpty()) {
                 setErrorText(getString(R.string.register_error_fill_form))
                 return@setOnClickListener
             }
-            if (vm.shopName.isEmpty()) {
+            if (vm.name.isEmpty()) {
+                setErrorText(getString(R.string.register_error_fill_form))
+                return@setOnClickListener
+            }
+            if (vm.phoneNumber.isEmpty()) {
                 setErrorText(getString(R.string.register_error_fill_form))
                 return@setOnClickListener
             }
@@ -52,12 +59,31 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
                 setErrorText(getString(R.string.login_error_password_length))
                 return@setOnClickListener
             }
-            val intent = Intent(this, OtpActivity::class.java)
-            startActivity(intent)
+            vm.register()
         }
         binding.tvLogin.setOnClickListener {
             finish()
         }
+    }
+
+    private fun observeRegisterResult() {
+        vm.register.observe(
+            loadingProgressBar = binding.pbLoading,
+            success = {
+                showDialog(
+                    message = it,
+                    positiveButton = getString(R.string.login),
+                    positiveAction = {
+                        finish()
+                    })
+            },
+            error = {
+                showDialog(
+                    message = it.orEmpty(),
+                    positiveButton = getString(android.R.string.ok)
+                )
+            },
+        )
     }
 
     private fun setErrorText(error: String) {

@@ -16,6 +16,9 @@
 
     <string name="empty_data">Tidak ada data</string>
 
+    <string name="email">Email</string>
+    <string name="name">Nama</string>
+    <string name="phone_number">No Telepon</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="total">Total</string>
@@ -37,8 +40,8 @@
     <string name="register">Daftar</string>
     <string name="register_underline"><u>Daftar</u></string>
     <string name="register_header">Daftarkan Tokomu!</string>
-    <string name="register_desc">Masukkan informasi awal akun Tokomu</string>
-    <string name="register_success">Tokomu berhasil didaftarkan, silakan login!</string>
+    <string name="register_desc">Masukkan informasi awal akunmu</string>
+    <string name="register_success">Berhasil membuat akun, silakan login!</string>
     <string name="register_error_fill_form">Lengkapi informasi akun</string>
 
     <string name="otp_title">Input OTP</string>
