@@ -1,18 +1,27 @@
 package id.io.android.seller.presentation.user.login
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.io.android.seller.domain.usecase.user.UserUseCases
+import id.io.android.seller.util.LoadState
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val userUseCases: UserUseCases) : ViewModel() {
 
-    var username = ""
+    var email = ""
     var password = ""
 
-    fun onUsernameChanged(username: String) {
-        this.username = username.trim()
+    private val _login = MutableLiveData<LoadState<String>>()
+    val login: LiveData<LoadState<String>>
+        get() = _login
+
+    fun onEmailChanged(email: String) {
+        this.email = email.trim()
     }
 
     fun onPasswordChanged(password: String) {
@@ -20,6 +29,14 @@ class LoginViewModel @Inject constructor(private val userUseCases: UserUseCases)
     }
 
     fun login() {
-        userUseCases.setLoggedInUseCase(true)
+        _login.value = LoadState.Loading
+        viewModelScope.launch {
+            _login.value = userUseCases.loginUseCase(
+                LoginParams(
+                    email = email,
+                    password = password
+                )
+            )
+        }
     }
 }

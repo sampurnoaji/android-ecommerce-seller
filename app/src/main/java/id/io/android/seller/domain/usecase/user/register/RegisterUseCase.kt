@@ -6,7 +6,8 @@ import id.io.android.seller.presentation.user.register.RegisterParams
 import id.io.android.seller.util.LoadState
 import javax.inject.Inject
 
-class RegisterUseCase @Inject constructor(private val repository: UserRepository): BaseUseCase<RegisterParams, Any> {
+class RegisterUseCase @Inject constructor(private val repository: UserRepository) :
+    BaseUseCase<RegisterParams, LoadState<String>> {
     override suspend fun invoke(params: RegisterParams): LoadState<String> {
         return repository.register(params)
     }

@@ -1,7 +1,9 @@
 package id.io.android.seller.data.source.remote
 
+import id.io.android.seller.data.model.request.user.login.LoginRequest
 import id.io.android.seller.data.model.request.user.register.RegisterRequest
 import id.io.android.seller.data.model.response.user.UserResponse
+import id.io.android.seller.presentation.user.login.LoginParams
 import id.io.android.seller.presentation.user.register.RegisterParams
 import id.io.android.seller.util.LoadState
 import id.io.android.seller.util.remote.ResponseHelper
@@ -20,6 +22,17 @@ class UserRemoteDataSource @Inject constructor(private val api: ApiService) : Re
                     password = params.password
                 )
             ).message.orEmpty()
+        }
+    }
+
+    suspend fun login(params: LoginParams): LoadState<String> {
+        return call {
+            api.login(
+                LoginRequest(
+                    email = params.email,
+                    password = params.password
+                )
+            ).data?.token.orEmpty()
         }
     }
 }

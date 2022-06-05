@@ -23,20 +23,21 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupActionView()
+        observeLoginResult()
     }
 
     private fun setupActionView() {
-        binding.etUsername.doOnTextChanged { text, _, _, _ ->
-            vm.onUsernameChanged(text.toString())
+        binding.etEmail.doOnTextChanged { text, _, _, _ ->
+            vm.onEmailChanged(text.toString())
             binding.tvError.visibility = View.GONE
         }
         binding.etPassword.doOnTextChanged { text, _, _, _ ->
             vm.onPasswordChanged(text.toString())
             binding.tvError.visibility = View.GONE
         }
-        
+
         binding.btnLogin.setOnClickListener {
-            if (vm.username.isEmpty()) {
+            if (vm.email.isEmpty()) {
                 setErrorText(getString(R.string.register_error_fill_form))
                 return@setOnClickListener
             }
@@ -45,14 +46,28 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                 return@setOnClickListener
             }
             vm.login()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
         }
         binding.tvRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun observeLoginResult() {
+        vm.login.observe(
+            loadingProgressBar = binding.pbLoading,
+            success = {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            },
+            error = {
+                showDialog(
+                    message = it.orEmpty(),
+                    positiveButton = getString(android.R.string.ok)
+                )
+            }
+        )
     }
 
     private fun setErrorText(error: String) {
