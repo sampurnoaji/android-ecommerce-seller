@@ -41,12 +41,12 @@ android {
         dev {
             applicationIdSuffix ".dev"
             dimension "version"
-            resValue "string", "app_name", "Seller-Dev"
+            resValue "string", "app_name", "Oleb Sai-Dev"
             buildConfigField "String", "API_BASE_URL", API_BASE_URL_DEV
         }
         production {
             dimension "version"
-            resValue "string", "app_name", "Seller"
+            resValue "string", "app_name", "Oleb Sai"
             buildConfigField "String", "API_BASE_URL", API_BASE_URL
         }
     }
