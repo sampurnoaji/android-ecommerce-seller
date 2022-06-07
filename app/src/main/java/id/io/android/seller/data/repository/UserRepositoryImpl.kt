@@ -19,6 +19,11 @@ class UserRepositoryImpl @Inject constructor(
     }
 
     override fun isLoggedIn(): Boolean = localDataSource.isLoggedIn()
+    override fun setToken(token: String) {
+        localDataSource.setToken(token)
+    }
+
+    override fun getToken(): String = localDataSource.getToken()
 
     override suspend fun getUser(id: Int): User {
         return localDataSource.getUser()?.toDomain() ?: remoteDataSource.getUser(id).toDomain()

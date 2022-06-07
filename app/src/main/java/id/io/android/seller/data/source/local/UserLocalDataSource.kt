@@ -18,4 +18,10 @@ class UserLocalDataSource @Inject constructor(
     }
 
     fun isLoggedIn(): Boolean = pref.getBoolean(SharedPrefModule.KEY_IS_LOGGED_IN, false)
+
+    fun setToken(token: String) {
+        prefEditor.putString(SharedPrefModule.KEY_USER_TOKEN, token)
+    }
+
+    fun getToken(): String = pref.getString(SharedPrefModule.KEY_USER_TOKEN, "").orEmpty()
 }

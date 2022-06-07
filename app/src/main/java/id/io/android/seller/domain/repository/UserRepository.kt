@@ -8,6 +8,8 @@ import id.io.android.seller.util.LoadState
 interface UserRepository {
     fun setLoggedIn(isLoggedIn: Boolean)
     fun isLoggedIn(): Boolean
+    fun setToken(token: String)
+    fun getToken(): String
     suspend fun getUser(id: Int): User
     suspend fun register(registerParams: RegisterParams): LoadState<String>
     suspend fun login(loginParams: LoginParams): LoadState<String>

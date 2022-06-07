@@ -2,6 +2,8 @@ package id.io.android.seller.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,12 +17,21 @@ object SharedPrefModule {
 
     private const val PREF_NAME = "app_pref"
 
-    const val KEY_IS_LOGGED_IN = "isLoggedIn"
+    const val KEY_IS_LOGGED_IN = "is_logged_in"
+    const val KEY_USER_TOKEN = "user_token"
 
     @Singleton
     @Provides
-    fun providePref(@ApplicationContext context: Context): SharedPreferences =
-        context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+    fun providePref(@ApplicationContext context: Context): SharedPreferences {
+        val masterKeyAlias: String = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+        return EncryptedSharedPreferences.create(
+            PREF_NAME,
+            masterKeyAlias,
+            context,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
+    }
 
     @Singleton
     @Provides
