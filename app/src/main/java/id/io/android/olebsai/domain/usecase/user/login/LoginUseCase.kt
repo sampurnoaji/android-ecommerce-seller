@@ -12,6 +12,7 @@ class LoginUseCase @Inject constructor(private val repository: UserRepository) :
         val result = repository.login(params)
         if (result is LoadState.Success) {
             repository.setLoggedIn(true)
+            repository.setToken(result.data)
         }
         return result
     }
