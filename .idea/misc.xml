@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bg_card_login.xml" value="0.2755" />
         <entry key="app/src/main/res/drawable/chip_order_status.xml" value="0.2755" />
         <entry key="app/src/main/res/drawable/chip_order_status_green.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable/chip_order_status_red.xml" value="0.2755" />

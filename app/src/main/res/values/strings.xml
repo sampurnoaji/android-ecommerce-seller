@@ -34,7 +34,7 @@
 
     <string name="login">Login</string>
     <string name="login_underline"><u>Login</u></string>
-    <string name="login_header">Masuk ke Toko!</string>
+    <string name="login_header">Selamat Datang!</string>
     <string name="login_error_password_length">Password minimal 6 digit</string>
 
     <string name="register">Daftar</string>
