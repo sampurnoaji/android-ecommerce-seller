@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Theme.Seller" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#4fc3f7</item>
-        <item name="colorPrimaryVariant">#0093c4</item>
+        <item name="colorPrimary">@color/primary_normal</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">#ff6f00</item>
-        <item name="colorSecondaryVariant">#c43e00</item>
+        <item name="colorSecondary">@color/secondary_normal</item>
+        <item name="colorSecondaryVariant">@color/secondary_dark</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
@@ -21,5 +21,41 @@
 
     <style name="TextView.ChipStatus">
         <item name="android:textSize">@dimen/text_10</item>
+    </style>
+
+    <style name="TextViewHeader" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextViewSubHeader" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="android:textColor">#a8a8a8</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextViewError" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/secondary_light</item>
+        <item name="drawableStartCompat">@drawable/ic_baseline_warning_amber_12</item>
+        <item name="drawableTint">@color/secondary_light</item>
+        <item name="android:drawablePadding">4dp</item>
+    </style>
+
+    <style name="PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="backgroundTint">#FFD82F</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <style name="FormLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">@color/white</item>
+        <item name="boxStrokeColor">@color/white</item>
+        <item name="android:theme">@style/WhiteTheme</item>
+    </style>
+
+    <style name="WhiteTheme">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorOnSurface">@color/white</item>
     </style>
 </resources>
