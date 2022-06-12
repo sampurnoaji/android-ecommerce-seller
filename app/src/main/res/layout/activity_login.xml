@@ -82,11 +82,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textAlignment="center"
+        android:textColor="@color/secondary_light"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:drawableTint="@color/secondary_light"
+        app:layout_constraintEnd_toEndOf="@+id/tilPassword"
+        app:layout_constraintStart_toStartOf="@+id/tilPassword"
         app:layout_constraintTop_toBottomOf="@+id/tilPassword"
-        tools:text="OTP salah"
+        tools:text="Password salah"
         tools:visibility="visible" />
 
     <com.google.android.material.button.MaterialButton
@@ -95,6 +97,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:text="@string/login"
+        android:textColor="@color/black"
+        app:backgroundTint="@color/secondary_normal"
         app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
 
     <TextView
