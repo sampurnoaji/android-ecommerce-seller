@@ -18,7 +18,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_warning_amber_12.xml" value="0.1415" />
         <entry key="app/src/main/res/drawable/selected_dot.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable/top_corner_rounded.xml" value="0.1275" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23278985507246377" />
         <entry key="app/src/main/res/layout/activity_otp.xml" value="0.23278985507246377" />
         <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.4244791666666667" />

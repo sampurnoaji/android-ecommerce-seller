@@ -13,6 +13,8 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
         <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.Surface</item>
+        <item name="materialButtonStyle">@style/PrimaryButton</item>
+        <item name="textInputStyle">@style/TextInputLayout</item>
     </style>
 
     <style name="TextView" parent="Widget.AppCompat.TextView">
@@ -48,7 +50,8 @@
         <item name="cornerRadius">12dp</item>
     </style>
 
-    <style name="FormLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColorHint">@color/white_60</item>
         <item name="hintTextColor">@color/white</item>
         <item name="boxStrokeColor">@color/white</item>
         <item name="android:theme">@style/WhiteTheme</item>
