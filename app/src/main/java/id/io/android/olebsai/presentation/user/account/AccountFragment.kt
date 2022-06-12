@@ -24,18 +24,18 @@ class AccountFragment :
     }
 
     private fun setupActionView() {
-        binding.tvLogout.setOnClickListener {
-            showDialog(
-                message = resources.getString(R.string.logout_message),
-                negativeButton = resources.getString(R.string.out),
-                negativeAction = {
-                    vm.logout()
-                    val intent = Intent(requireActivity(), LoginActivity::class.java)
-                    startActivity(intent)
-                    requireActivity().finish()
-                },
-                positiveButton = resources.getString(R.string.cancel),
-            )
-        }
+//        binding.tvLogout.setOnClickListener {
+//            showDialog(
+//                message = resources.getString(R.string.logout_message),
+//                negativeButton = resources.getString(R.string.out),
+//                negativeAction = {
+//                    vm.logout()
+//                    val intent = Intent(requireActivity(), LoginActivity::class.java)
+//                    startActivity(intent)
+//                    requireActivity().finish()
+//                },
+//                positiveButton = resources.getString(R.string.cancel),
+//            )
+//        }
     }
 }

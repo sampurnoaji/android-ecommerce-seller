@@ -3,6 +3,7 @@ package id.io.android.olebsai.presentation.user.register
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.core.widget.doOnTextChanged
 import dagger.hilt.android.AndroidEntryPoint
 import id.io.android.olebsai.R
 import id.io.android.olebsai.core.BaseActivity
