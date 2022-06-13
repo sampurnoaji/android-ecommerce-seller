@@ -26,7 +26,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     private val orderFragment by lazy { OrderFragment() }
     private val productFragment by lazy { ProductFragment() }
     private val accountFragment by lazy { AccountFragment() }
-    private var currentFragment: Fragment = homeFragment
+    private var currentFragment: Fragment = orderFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,10 +38,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         showFragment(currentFragment)
         binding.bottomNavigation.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.menuHome -> {
-                    showFragment(homeFragment)
-                    true
-                }
+//                R.id.menuHome -> {
+//                    showFragment(homeFragment)
+//                    true
+//                }
                 R.id.menuOrder -> {
                     showFragment(orderFragment)
                     true
@@ -60,7 +60,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     override fun onBackPressed() {
-        if (currentFragment != homeFragment) binding.bottomNavigation.selectedItemId = R.id.menuHome
+        //todo: back pressed
+        if (currentFragment != homeFragment) binding.bottomNavigation.selectedItemId = R.id.menuOrder
         else super.onBackPressed()
     }
 
