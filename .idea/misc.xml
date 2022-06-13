@@ -16,8 +16,10 @@
         <entry key="app/src/main/res/drawable/ic_baseline_chevron_right_18.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_chevron_right_24.xml" value="0.3875" />
         <entry key="app/src/main/res/drawable/ic_baseline_list_alt_24.xml" value="0.2395" />
+        <entry key="app/src/main/res/drawable/ic_baseline_people_16.xml" value="0.218" />
         <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_shopping_cart_checkout_24.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/ic_baseline_star_24.xml" value="0.3105" />
         <entry key="app/src/main/res/drawable/ic_baseline_warning_amber_12.xml" value="0.1415" />
         <entry key="app/src/main/res/drawable/selected_dot.xml" value="0.1275" />
         <entry key="app/src/main/res/drawable/top_corner_rounded.xml" value="0.1275" />
@@ -31,11 +33,13 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.37764606265876377" />
         <entry key="app/src/main/res/layout/fragment_order.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_product.xml" value="0.23278985507246377" />
+        <entry key="app/src/main/res/layout/fragment_shop.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_banner.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_dashboard_card.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_order.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_product.xml" value="0.40655105973025046" />
         <entry key="app/src/main/res/layout/item_product_image.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_shop.xml" value="0.5" />
         <entry key="app/src/main/res/menu/menu_main_bottom_nav.xml" value="0.4244791666666667" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1685" />
       </map>
