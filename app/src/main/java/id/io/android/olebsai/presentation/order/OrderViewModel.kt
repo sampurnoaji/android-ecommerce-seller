@@ -67,20 +67,46 @@ class OrderViewModel @Inject constructor() : ViewModel() {
                 customerName = "Rendi Uhuy",
                 date = "22 Mei 2022",
                 total = 3005007,
-                products = mapOf(
-                    2 to Product(
+                products = listOf(
+                    Product(
                         id = 1,
                         name = "Penggaris",
                         price = 12000,
                         stock = 14,
-                        imageUrl = ""
+                        imageUrl = "",
+                        qty = 4,
                     ),
-                    1 to Product(
-                        id = 1,
-                        name = "Penggaris",
+                    Product(
+                        id = 2,
+                        name = "Celana",
                         price = 12000,
                         stock = 14,
-                        imageUrl = ""
+                        imageUrl = "",
+                        qty = 4,
+                    ),
+                    Product(
+                        id = 3,
+                        name = "Laptop",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = "",
+                        qty = 4,
+                    ),
+                    Product(
+                        id = 3,
+                        name = "Laptop",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = "",
+                        qty = 4,
+                    ),
+                    Product(
+                        id = 3,
+                        name = "Laptop",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = "",
+                        qty = 4,
                     ),
                 )
             ),
@@ -90,20 +116,30 @@ class OrderViewModel @Inject constructor() : ViewModel() {
                 customerName = "Noge Ahay",
                 date = "22 Mei 2022",
                 total = 300500,
-                products = mapOf(
-                    2 to Product(
+                products = listOf(
+                    Product(
                         id = 1,
                         name = "Penggaris",
                         price = 12000,
                         stock = 14,
-                        imageUrl = ""
+                        imageUrl = "",
+                        qty = 4,
                     ),
-                    1 to Product(
-                        id = 1,
-                        name = "Penggaris",
+                    Product(
+                        id = 2,
+                        name = "Celana",
                         price = 12000,
                         stock = 14,
-                        imageUrl = ""
+                        imageUrl = "",
+                        qty = 4,
+                    ),
+                    Product(
+                        id = 3,
+                        name = "Laptop",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = "",
+                        qty = 4,
                     ),
                 )
             ),
@@ -113,20 +149,30 @@ class OrderViewModel @Inject constructor() : ViewModel() {
                 customerName = "Joko",
                 date = "22 Mei 2022",
                 total = 300500,
-                products = mapOf(
-                    2 to Product(
+                products = listOf(
+                    Product(
                         id = 1,
                         name = "Penggaris",
                         price = 12000,
                         stock = 14,
-                        imageUrl = ""
+                        imageUrl = "",
+                        qty = 4,
                     ),
-                    1 to Product(
-                        id = 1,
-                        name = "Penggaris",
+                    Product(
+                        id = 2,
+                        name = "Celana",
                         price = 12000,
                         stock = 14,
-                        imageUrl = ""
+                        imageUrl = "",
+                        qty = 4,
+                    ),
+                    Product(
+                        id = 3,
+                        name = "Laptop",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = "",
+                        qty = 4,
                     ),
                 )
             ),
@@ -136,20 +182,38 @@ class OrderViewModel @Inject constructor() : ViewModel() {
                 customerName = "Bach Coy",
                 date = "22 Mei 2022",
                 total = 300500,
-                products = mapOf(
-                    2 to Product(
+                products = listOf(
+                    Product(
                         id = 1,
                         name = "Penggaris",
                         price = 12000,
                         stock = 14,
-                        imageUrl = ""
+                        imageUrl = "",
+                        qty = 4,
                     ),
-                    1 to Product(
-                        id = 1,
-                        name = "Penggaris",
+                    Product(
+                        id = 2,
+                        name = "Celana",
                         price = 12000,
                         stock = 14,
-                        imageUrl = ""
+                        imageUrl = "",
+                        qty = 4,
+                    ),
+                    Product(
+                        id = 3,
+                        name = "Laptop",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = "",
+                        qty = 4,
+                    ),
+                    Product(
+                        id = 3,
+                        name = "Laptop",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = "",
+                        qty = 4,
                     ),
                 )
             ),
@@ -159,20 +223,30 @@ class OrderViewModel @Inject constructor() : ViewModel() {
                 customerName = "Cihuy",
                 date = "22 Mei 2022",
                 total = 300500,
-                products = mapOf(
-                    2 to Product(
+                products = listOf(
+                    Product(
                         id = 1,
                         name = "Penggaris",
                         price = 12000,
                         stock = 14,
-                        imageUrl = ""
+                        imageUrl = "",
+                        qty = 4,
                     ),
-                    1 to Product(
-                        id = 1,
-                        name = "Penggaris",
+                    Product(
+                        id = 2,
+                        name = "Celana",
                         price = 12000,
                         stock = 14,
-                        imageUrl = ""
+                        imageUrl = "",
+                        qty = 4,
+                    ),
+                    Product(
+                        id = 3,
+                        name = "Laptop",
+                        price = 12000,
+                        stock = 14,
+                        imageUrl = "",
+                        qty = 4,
                     ),
                 )
             )

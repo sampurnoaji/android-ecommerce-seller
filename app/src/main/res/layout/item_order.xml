@@ -10,7 +10,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/bg_light"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackground">
 
         <TextView
             android:id="@+id/tvId"
@@ -23,7 +27,7 @@
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:background="@android:color/darker_gray"
+            tools:background="@color/bg_normal"
             tools:text="#ID12345" />
 
         <TextView
@@ -35,6 +39,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
             android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+
             app:layout_constraintEnd_toStartOf="@+id/labelTotal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvId"
@@ -60,6 +65,7 @@
             android:paddingHorizontal="16dp"
             android:text="@string/total"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+
             app:layout_constraintBottom_toBottomOf="@+id/tvTotal"
             app:layout_constraintEnd_toStartOf="@+id/tvTotal"
             app:layout_constraintTop_toTopOf="@+id/tvTotal" />
@@ -71,6 +77,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
             android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvId"
             tools:text="Rp 167.000" />
@@ -83,13 +90,43 @@
 
         <TextView
             android:id="@+id/tvProducts"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:lineSpacingExtra="4dp"
+            android:maxLines="2"
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            app:layout_constraintEnd_toStartOf="@+id/tvOtherProducts"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTotal"
-            tools:text="1 x Roti Bakar\n2 x Martaboy Telur" />
+            tools:text="1 x Roti Bakar\n2 x Martaboy Telur\n2 x Martaboy Telur" />
+
+        <TextView
+            android:id="@+id/tvOtherProducts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textSize="11sp"
+            android:textStyle="italic"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/imgChevronRight"
+            app:layout_constraintEnd_toStartOf="@+id/imgChevronRight"
+            app:layout_constraintTop_toTopOf="@+id/imgChevronRight"
+            tools:text="@string/x_other_item"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/imgChevronRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_baseline_chevron_right_18"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotal"
+            app:tint="?colorOnPrimary" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

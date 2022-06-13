@@ -13,7 +13,9 @@
     <color name="secondary_normal">#FFD82F</color>
     <color name="secondary_dark">#c8a700</color>
 
-    <color name="layout_bg">#070E29</color>
+    <color name="bg_light">#2C3863</color>
+    <color name="bg_normal">#212A4E</color>
+    <color name="bg_dark">#070E29</color>
 
     <color name="green_primary">#27AE60</color>
     <color name="green_primary_20">#3327AE60</color>

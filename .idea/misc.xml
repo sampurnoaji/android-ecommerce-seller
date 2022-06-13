@@ -24,15 +24,15 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23278985507246377" />
         <entry key="app/src/main/res/layout/activity_otp.xml" value="0.23278985507246377" />
         <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.4244791666666667" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.335" />
         <entry key="app/src/main/res/layout/chip_order_status.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.37764606265876377" />
-        <entry key="app/src/main/res/layout/fragment_order.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_order.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_product.xml" value="0.23278985507246377" />
         <entry key="app/src/main/res/layout/item_banner.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_dashboard_card.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/item_order.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/item_order.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_product.xml" value="0.40655105973025046" />
         <entry key="app/src/main/res/layout/item_product_image.xml" value="0.5" />
         <entry key="app/src/main/res/menu/menu_main_bottom_nav.xml" value="0.4244791666666667" />

@@ -9,7 +9,7 @@ data class Order(
     val customerName: String,
     val date: String,
     val total: Long,
-    val products: Map<Int, Product>
+    val products: List<Product>
 ) {
     enum class Status(val color: Int) {
         NEW(android.R.color.darker_gray),

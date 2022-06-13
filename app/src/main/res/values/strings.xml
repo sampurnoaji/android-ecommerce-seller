@@ -16,6 +16,7 @@
     <string name="setting">Pengaturan</string>
 
     <string name="empty_data">Tidak ada data</string>
+    <string name="x_other_item">%d item lainnya</string>
 
     <string name="email">Email</string>
     <string name="name">Nama</string>

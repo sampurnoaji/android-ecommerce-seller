@@ -3,9 +3,11 @@ package id.io.android.olebsai.presentation.order
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import id.io.android.olebsai.R
 import id.io.android.olebsai.databinding.ItemOrderBinding
 import id.io.android.olebsai.domain.model.order.Order
 import id.io.android.olebsai.util.addThousandSeparator
@@ -34,13 +36,28 @@ class OrderListAdapter : ListAdapter<Order, OrderListAdapter.ViewHolder>(OrderDi
                 tvDate.text = order.date
                 tvTotal.text = "Rp ${order.total.addThousandSeparator()}"
 
-                var products = ""
-                order.products.onEachIndexed { index, product ->
-                    products +=
-                        if (index + 1 >= order.products.size) "${product.key} x ${product.value.name}"
-                        else "${product.key} x ${product.value.name}\n"
+                when (order.products.size) {
+                    0 -> {
+                    }
+                    1 -> {
+                        tvProducts.text = "${order.products[0].qty} x ${order.products[0].name}"
+                    }
+                    2 -> {
+                        tvProducts.text = "${order.products[0].qty} x ${order.products[0].name}" +
+                                "\n${order.products[1].qty} x ${order.products[1].name}"
+                    }
+                    else -> {
+                        tvProducts.text = "${order.products[0].qty} x ${order.products[0].name}" +
+                                "\n${order.products[1].qty} x ${order.products[1].name}"
+                        tvOtherProducts.apply {
+                            isVisible = true
+                            text = context.resources.getString(
+                                R.string.x_other_item,
+                                order.products.size - 2
+                            )
+                        }
+                    }
                 }
-                tvProducts.text = products
             }
         }
     }
