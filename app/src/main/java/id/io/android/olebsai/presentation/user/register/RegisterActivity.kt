@@ -1,14 +1,16 @@
 package id.io.android.olebsai.presentation.user.register
 
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.core.widget.doOnTextChanged
 import dagger.hilt.android.AndroidEntryPoint
 import id.io.android.olebsai.R
 import id.io.android.olebsai.core.BaseActivity
 import id.io.android.olebsai.databinding.ActivityRegisterBinding
-import id.io.android.olebsai.util.UserConstant.PASSWORD_LENGTH
+import id.io.android.olebsai.util.clearError
+import id.io.android.olebsai.util.isValidEmail
+import id.io.android.olebsai.util.setErrorText
+import id.io.android.olebsai.util.ui.Dialog
 import id.io.android.olebsai.util.viewBinding
 
 @AndroidEntryPoint
@@ -19,76 +21,98 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupView()
         setupActionView()
         observeRegisterResult()
     }
 
-    private fun setupActionView() {
-        binding.etEmail.doOnTextChanged { text, _, _, _ ->
-            vm.onEmailChanged(text.toString())
-            binding.tvError.visibility = View.GONE
-        }
-        binding.etName.doOnTextChanged { text, _, _, _ ->
-            vm.onNameChanged(text.toString())
-            binding.tvError.visibility = View.GONE
-        }
-        binding.etPhoneNumber.doOnTextChanged { text, _, _, _ ->
-            vm.onPhoneNumberChanged(text.toString())
-            binding.tvError.visibility = View.GONE
-        }
-        binding.etPassword.doOnTextChanged { text, _, _, _ ->
-            vm.onPasswordChanged(text.toString())
-            binding.tvError.visibility = View.GONE
-        }
+    private fun setupView() {
 
-        binding.btnRegister.setOnClickListener {
-            if (vm.email.isEmpty()) {
-                setErrorText(getString(R.string.register_error_fill_form))
-                return@setOnClickListener
+    }
+
+    private fun setupActionView() {
+        with(binding) {
+            imgBack.setOnClickListener { onBackPressed() }
+
+            etEmail.doOnTextChanged { text, _, _, _ ->
+                vm.onEmailChanged(text.toString())
+                tilEmail.clearError()
             }
-            if (vm.name.isEmpty()) {
-                setErrorText(getString(R.string.register_error_fill_form))
-                return@setOnClickListener
+            etName.doOnTextChanged { text, _, _, _ ->
+                vm.onNameChanged(text.toString())
+                tilName.clearError()
             }
-            if (vm.phoneNumber.isEmpty()) {
-                setErrorText(getString(R.string.register_error_fill_form))
-                return@setOnClickListener
+            etPhoneNumber.doOnTextChanged { text, _, _, _ ->
+                vm.onPhoneNumberChanged(text.toString())
+                tilPhoneNumber.clearError()
             }
-            if (vm.password.isEmpty() || vm.password.length < PASSWORD_LENGTH) {
-                setErrorText(getString(R.string.login_error_password_length))
-                return@setOnClickListener
+            etShopName.doOnTextChanged { text, _, _, _ ->
+                vm.onShopNameChanged(text.toString())
+                tilShopName.clearError()
             }
-            vm.register()
-        }
-        binding.tvLogin.setOnClickListener {
-            finish()
+            etPassword.doOnTextChanged { text, _, _, _ ->
+                vm.onPasswordChanged(text.toString())
+                tilPassword.clearError()
+            }
+            etRepeatPassword.doOnTextChanged { text, _, _, _ ->
+                vm.onRepeatPasswordChanged(text.toString())
+                tilRepeatPassword.clearError()
+            }
+
+            btnRegister.setOnClickListener {
+                doRegister()
+            }
         }
     }
 
     private fun observeRegisterResult() {
         vm.register.observe(
-            loadingProgressBar = binding.pbLoading,
-            success = {
-                showDialog(
-                    message = it,
-                    positiveButton = getString(R.string.login),
+            onLoading = {},
+            onSuccess = {
+                Dialog(
+                    context = this,
+                    cancelable = false,
+                    message = "Registrasi berhasil",
+                    positiveButtonText = getString(R.string.login),
                     positiveAction = {
                         finish()
-                    })
+                    }).show()
             },
-            error = {
-                showDialog(
-                    message = it.orEmpty(),
-                    positiveButton = getString(android.R.string.ok)
-                )
+            onError = {
+                Dialog(
+                    context = this,
+                    message = "Registrasi gagal",
+                    positiveButtonText = getString(android.R.string.ok)
+                ).show()
             },
         )
     }
 
-    private fun setErrorText(error: String) {
-        binding.tvError.apply {
-            visibility = View.VISIBLE
-            text = error
+    private fun doRegister() {
+        with(binding) {
+            if (vm.name.isEmpty()) { tilName.setErrorText() }
+            if (vm.shopName.isEmpty()) { tilShopName.setErrorText() }
+            if (vm.phoneNumber.isEmpty()) { tilPhoneNumber.setErrorText() }
+            if (vm.email.isEmpty()) { tilEmail.setErrorText() }
+            if (vm.password.isEmpty()) { tilPassword.setErrorText() }
+            if (vm.repeatPassword.isEmpty()) {
+                tilRepeatPassword.setErrorText()
+                return
+            }
+
+            if (vm.phoneNumber.first() != '0' || vm.phoneNumber.length <= 8) {
+                tilPhoneNumber.setErrorText(R.string.form_phone_invalid)
+                return
+            }
+            if (!vm.email.isValidEmail()) {
+                tilEmail.setErrorText(R.string.form_email_invalid)
+                return
+            }
+            if (vm.password != vm.repeatPassword) {
+                tilRepeatPassword.setErrorText(R.string.form_password_not_equal)
+                return
+            }
+            vm.register()
         }
     }
 }

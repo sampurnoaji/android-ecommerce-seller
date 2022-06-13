@@ -1,88 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="8dp">
+    android:padding="16dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgProduct"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@android:color/darker_gray"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvName"
+        style="@style/Text.Heading4.SemiBold"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:foreground="?selectableItemBackground">
+        android:layout_marginHorizontal="16dp"
+        android:textColor="@color/blue_black_50"
+        app:layout_constraintEnd_toStartOf="@+id/status"
+        app:layout_constraintStart_toEndOf="@+id/imgProduct"
+        app:layout_constraintTop_toTopOf="@+id/imgProduct"
+        tools:text="Kertas kado nastar" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgProduct"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@android:color/darker_gray"
-            android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <id.io.android.olebsai.component.StatusChipView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/tvPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvName"
+        tools:text="@string/product_approval_rejected"
+        tools:visibility="visible" />
 
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:paddingHorizontal="16dp"
-            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/imgProduct"
-            app:layout_constraintTop_toBottomOf="@+id/imgProduct"
-            tools:text="Kertas kado nastar" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSeeApprovalDetail"
+        style="@style/ButtonOutlined.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/see"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/status"
+        tools:visibility="visible" />
 
-        <TextView
-            android:id="@+id/tvPrice"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:paddingHorizontal="16dp"
-            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/imgProduct"
-            app:layout_constraintTop_toBottomOf="@+id/tvName"
-            tools:text="Rp 50.000" />
+    <TextView
+        android:id="@+id/tvPrice"
+        style="@style/Text.Heading4.SemiBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="?colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/tvName"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        tools:text="Rp 70.000" />
 
-        <TextView
-            android:id="@+id/labelStock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="8dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:paddingStart="16dp"
-            android:paddingEnd="8dp"
-            android:text="@string/product_stock_semicolon"
-            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/imgProduct"
-            app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
+    <TextView
+        android:id="@+id/tvOriginalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/text_strike_through"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrice"
+        tools:text="Rp 100.000" />
 
-        <TextView
-            android:id="@+id/tvStock"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-            android:textColor="@color/green_primary"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/labelStock"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/labelStock"
-            app:layout_constraintTop_toTopOf="@+id/labelStock"
-            tools:text="10" />
+    <TextView
+        android:id="@+id/tvPercentDiscount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="2dp"
+        android:paddingHorizontal="4dp"
+        android:textColor="@color/green_primary"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tvOriginalPrice"
+        app:layout_constraintTop_toBottomOf="@+id/tvPrice"
+        tools:text="20%" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+    <LinearLayout
+        android:id="@+id/containerCategories"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvPrice"
+        app:layout_constraintTop_toBottomOf="@+id/tvPercentDiscount" />
+
+    <TextView
+        android:id="@+id/labelStock"
+        style="@style/Text.Heading7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/product_stock_semicolon"
+        app:layout_constraintStart_toStartOf="@+id/tvPrice"
+        app:layout_constraintTop_toBottomOf="@+id/containerCategories"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tvStock"
+        style="@style/Text.Heading7.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/green_primary"
+        app:layout_constraintBottom_toBottomOf="@+id/labelStock"
+        app:layout_constraintStart_toEndOf="@+id/labelStock"
+        app:layout_constraintTop_toTopOf="@+id/labelStock"
+        tools:text="10" />
+
+    <TextView
+        android:id="@+id/tvSoldCount"
+        style="@style/Text.Heading7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/tvName"
+        app:layout_constraintTop_toBottomOf="@id/labelStock"
+        tools:text="Terjual 17" />
+</androidx.constraintlayout.widget.ConstraintLayout>

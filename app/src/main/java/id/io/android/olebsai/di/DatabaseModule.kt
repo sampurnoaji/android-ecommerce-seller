@@ -9,8 +9,8 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import id.io.android.olebsai.data.source.local.UserDao
 import id.io.android.olebsai.data.source.local.AppDatabase
+import id.io.android.olebsai.data.source.local.UserDao
 import javax.inject.Provider
 import javax.inject.Singleton
 
@@ -27,7 +27,7 @@ object DatabaseModule {
         provider: Provider<UserDao>
     ): AppDatabase {
         return Room.databaseBuilder(context, AppDatabase::class.java, DB_NAME)
-            .addCallback(DatabaseCallback(context, provider))
+            .addCallback(DatabaseCallback())
 //            .addMigrations(MIGRATION_1_2)
             .build()
     }

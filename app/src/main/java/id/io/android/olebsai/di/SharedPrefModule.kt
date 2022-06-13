@@ -17,8 +17,11 @@ object SharedPrefModule {
 
     private const val PREF_NAME = "app_pref"
 
+    const val KEY_IS_FIRST_LAUNCH_APP = "is_first_launch_app"
     const val KEY_IS_LOGGED_IN = "is_logged_in"
     const val KEY_USER_TOKEN = "user_token"
+    const val KEY_USER = "user"
+    const val KEY_SHOP = "shop"
 
     @Singleton
     @Provides

@@ -1,5 +1,6 @@
 package id.io.android.olebsai.presentation.user.otp
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -9,7 +10,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.io.android.olebsai.R
 import id.io.android.olebsai.core.BaseActivity
 import id.io.android.olebsai.databinding.ActivityOtpBinding
-import id.io.android.olebsai.presentation.user.login.LoginActivity
+import id.io.android.olebsai.domain.model.user.User
+import id.io.android.olebsai.presentation.MainActivity
 import id.io.android.olebsai.util.UserConstant.OTP_LENGTH
 import id.io.android.olebsai.util.viewBinding
 
@@ -19,13 +21,42 @@ class OtpActivity : BaseActivity<ActivityOtpBinding, OtpViewModel>() {
     override val binding: ActivityOtpBinding by viewBinding(ActivityOtpBinding::inflate)
     override val vm: OtpViewModel by viewModels()
 
+    private val user by lazy { intent?.getParcelableExtra<User>(ARG_KEY_USER) }
+
+    companion object {
+        private const val ARG_KEY_USER = "user"
+
+        @JvmStatic
+        fun start(context: Context, user: User) {
+            val starter = Intent(context, OtpActivity::class.java)
+                .putExtra(ARG_KEY_USER, user)
+            context.startActivity(starter)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupToolbar(binding.topAppBar, showHomeAsUp = true)
         setupActionView()
+        observeViewModel()
+    }
+
+    private fun observeViewModel() {
+        vm.loginWithOtpResult.observe(
+            onLoading = {},
+            onSuccess = {
+                user?.let { user -> vm.saveUser(user) }
+                MainActivity.start(this)
+                finish()
+            },
+            onError = {
+                showInfoDialog(it?.message.orEmpty())
+            }
+        )
     }
 
     private fun setupActionView() {
+        binding.imgBack.setOnClickListener { onBackPressed() }
+
         binding.etOtp.doOnTextChanged { text, _, _, _ ->
             vm.onOtpChanged(text.toString())
             binding.tvError.visibility = View.GONE
@@ -39,16 +70,7 @@ class OtpActivity : BaseActivity<ActivityOtpBinding, OtpViewModel>() {
                 }
                 return@setOnClickListener
             }
-            showDialog(
-                message = getString(R.string.register_success),
-                positiveButton = getString(android.R.string.ok),
-                positiveAction = {
-                    val intent = Intent(this, LoginActivity::class.java).apply {
-                        flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                    }
-                    startActivity(intent)
-                }
-            )
+            user?.let { user -> vm.loginWithOtp(user.email) }
         }
     }
 }

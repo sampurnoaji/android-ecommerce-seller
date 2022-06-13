@@ -2,7 +2,6 @@ package id.io.android.olebsai.presentation.user.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.core.widget.doOnTextChanged
 import dagger.hilt.android.AndroidEntryPoint
@@ -10,8 +9,10 @@ import id.io.android.olebsai.R
 import id.io.android.olebsai.core.BaseActivity
 import id.io.android.olebsai.databinding.ActivityLoginBinding
 import id.io.android.olebsai.presentation.MainActivity
+import id.io.android.olebsai.presentation.user.otp.OtpActivity
+import id.io.android.olebsai.presentation.user.password.ForgotPasswordActivity
 import id.io.android.olebsai.presentation.user.register.RegisterActivity
-import id.io.android.olebsai.util.UserConstant
+import id.io.android.olebsai.util.ui.Dialog
 import id.io.android.olebsai.util.viewBinding
 
 @AndroidEntryPoint
@@ -28,52 +29,64 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     private fun setupActionView() {
         binding.etEmail.doOnTextChanged { text, _, _, _ ->
-            vm.onEmailChanged(text.toString())
-            binding.tvError.visibility = View.GONE
+            vm.onUsernameChanged(text.toString())
         }
         binding.etPassword.doOnTextChanged { text, _, _, _ ->
             vm.onPasswordChanged(text.toString())
-            binding.tvError.visibility = View.GONE
         }
 
         binding.btnLogin.setOnClickListener {
-            if (vm.email.isEmpty()) {
-                setErrorText(getString(R.string.register_error_fill_form))
-                return@setOnClickListener
-            }
-            if (vm.password.isEmpty() || vm.password.length < UserConstant.PASSWORD_LENGTH) {
-                setErrorText(getString(R.string.login_error_password_length))
-                return@setOnClickListener
-            }
             vm.login()
         }
-        binding.tvRegister.setOnClickListener {
+        binding.btnRegister.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+        }
+        binding.tvForgotPassword.setOnClickListener {
+            startActivity(Intent(this, ForgotPasswordActivity::class.java))
         }
     }
 
     private fun observeLoginResult() {
+        vm.isEmptyForm.observe(this) {
+            if (it) {
+                Dialog(
+                    context = this,
+                    message = getString(R.string.login_error_form_empty),
+                    positiveButtonText = getString(R.string.close),
+                ).show()
+            }
+        }
+
+        vm.isErrorForm.observe(this) {
+            if (it) {
+                Dialog(
+                    context = this,
+                    message = getString(R.string.login_error_form_invalid),
+                    positiveButtonText = getString(R.string.close),
+                ).show()
+            }
+        }
+
         vm.login.observe(
-            loadingProgressBar = binding.pbLoading,
-            success = {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+            onLoading = {},
+            onSuccess = {
+                it?.first?.let { user ->
+                    if (user.otpFlag) {
+                        MainActivity.start(this)
+                        finish()
+                    } else {
+                        OtpActivity.start(this, user)
+                    }
+                }
             },
-            error = {
-                showDialog(
-                    message = it.orEmpty(),
-                    positiveButton = getString(android.R.string.ok)
-                )
+            onError = {
+                showInfoDialog(it?.message.toString())
             }
         )
     }
 
-    private fun setErrorText(error: String) {
-        binding.tvError.apply {
-            visibility = View.VISIBLE
-            text = error
-        }
+    override fun onBackPressed() {
+        finish()
     }
 }

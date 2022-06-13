@@ -7,25 +7,31 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import id.io.android.olebsai.databinding.ItemProductImageBinding
+import id.io.android.olebsai.domain.model.product.Product.Picture
 
-class ProductImagePagerAdapter :
-    ListAdapter<String, ProductImagePagerAdapter.ViewPagerViewHolder>(DiffCallback) {
+class ProductImagePagerAdapter(private val listener: Listener) :
+    ListAdapter<Picture, ProductImagePagerAdapter.ViewPagerViewHolder>(DIFF_UTIL) {
 
     inner class ViewPagerViewHolder(val binding: ItemProductImageBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(imageUrl: String) {
-            binding.imgProduct.load(imageUrl)
+        fun bind(item: Picture) {
+            binding.imgProduct.load(item.url)
+            binding.root.setOnClickListener {
+                listener.onClickImage(item)
+            }
         }
     }
 
-    object DiffCallback : DiffUtil.ItemCallback<String>() {
-        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
-            return oldItem == newItem
-        }
+    companion object {
+        val DIFF_UTIL = object : DiffUtil.ItemCallback<Picture>() {
+            override fun areItemsTheSame(oldItem: Picture, newItem: Picture): Boolean {
+                return oldItem == newItem
+            }
 
-        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
-            return oldItem.hashCode() == newItem.hashCode()
+            override fun areContentsTheSame(oldItem: Picture, newItem: Picture): Boolean {
+                return oldItem.pictureId == newItem.pictureId
+            }
         }
     }
 
@@ -40,5 +46,9 @@ class ProductImagePagerAdapter :
 
     override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
         holder.bind(getItem(position))
+    }
+
+    interface Listener {
+        fun onClickImage(picture: Picture)
     }
 }

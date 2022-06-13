@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<!--    <item
+    <item
         android:id="@+id/menuHome"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="@string/menu_home" />-->
+        android:title="@string/menu_home" />
     <item
         android:id="@+id/menuOrder"
         android:icon="@drawable/ic_baseline_list_alt_24"
@@ -12,8 +12,4 @@
         android:id="@+id/menuProduct"
         android:icon="@drawable/ic_baseline_dns_24"
         android:title="@string/menu_product" />
-    <item
-        android:id="@+id/menuAccount"
-        android:icon="@drawable/ic_baseline_manage_accounts_24"
-        android:title="@string/menu_account" />
 </menu>

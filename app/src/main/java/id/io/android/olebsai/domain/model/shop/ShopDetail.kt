@@ -1,0 +1,26 @@
+package id.io.android.olebsai.domain.model.shop
+
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class ShopDetail(
+    val id: String,
+    val userId: String,
+    val address: String,
+    val logo: String,
+    val note: String,
+    val postalCode: String,
+    val district: String,
+    val districtId: String,
+    val name: String,
+    val province: String,
+    val provinceId: String,
+    val subDistrict: String,
+    val subDistrictId: String,
+    val status: String,
+    val couriers: List<Courier>,
+) : Parcelable {
+
+    fun isApproved() = status == "AKTIF"
+}

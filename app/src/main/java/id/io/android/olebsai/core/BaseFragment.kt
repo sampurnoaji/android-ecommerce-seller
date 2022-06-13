@@ -2,9 +2,12 @@ package id.io.android.olebsai.core
 
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.viewbinding.ViewBinding
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import id.io.android.olebsai.R
+import id.io.android.olebsai.util.LoadState
+import id.io.android.olebsai.util.ui.Dialog
 
 
 abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(@LayoutRes id: Int) : Fragment(id) {
@@ -12,28 +15,37 @@ abstract class BaseFragment<B : ViewBinding, VM : ViewModel>(@LayoutRes id: Int)
     abstract val binding: B
     abstract val vm: VM
 
-    fun showDialog(
-        title: String? = null,
-        message: String,
-        neutralButton: String? = null,
-        neutralAction: () -> Unit? = {},
-        negativeButton: String? = null,
-        negativeAction: () -> Unit? = {},
-        positiveButton: String? = null,
-        positiveAction: () -> Unit? = {}
+    fun <T> LiveData<LoadState<T>>.observe(
+        onSuccess: (T?) -> Unit,
+        onError: (LoadState.Error?) -> Unit,
+        onLoading: () -> Unit = {},
+        embedLoading: Boolean = true,
     ) {
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle(title)
-            .setMessage(message)
-            .setNeutralButton(neutralButton) { dialog, which ->
-                neutralAction()
+        observe(viewLifecycleOwner) {
+            when (it) {
+                is LoadState.Loading -> {
+                    if (embedLoading) (requireActivity() as BaseActivity<*, *>).showLoading()
+                    onLoading()
+                }
+                is LoadState.Success -> {
+                    (requireActivity() as BaseActivity<*, *>).hideLoading()
+                    onSuccess(it.data)
+                }
+                is LoadState.Error -> {
+                    (requireActivity() as BaseActivity<*, *>).hideLoading()
+                    onError(it)
+                }
             }
-            .setNegativeButton(negativeButton) { dialog, which ->
-                negativeAction()
-            }
-            .setPositiveButton(positiveButton) { dialog, which ->
-                positiveAction()
-            }
-            .show()
+        }
+    }
+
+    fun showInfoDialog(message: String, onCloseDialog: (() -> Unit)? = null) {
+        Dialog(
+            context = requireContext(),
+            cancelable = false,
+            message = message,
+            positiveButtonText = getString(R.string.close),
+            positiveAction = { onCloseDialog?.invoke() }
+        ).show()
     }
 }

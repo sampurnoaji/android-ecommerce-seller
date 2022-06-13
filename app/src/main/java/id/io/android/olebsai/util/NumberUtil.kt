@@ -9,3 +9,7 @@ fun Long.addThousandSeparator(): String {
     val numberFormat = NumberFormat.getInstance(indonesianLocale)
     return numberFormat.format(this)
 }
+
+fun Long.toRupiah(): String {
+    return "Rp ${this.addThousandSeparator()}"
+}

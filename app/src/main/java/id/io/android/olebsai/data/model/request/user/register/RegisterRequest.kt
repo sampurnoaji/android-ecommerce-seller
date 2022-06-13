@@ -10,6 +10,8 @@ data class RegisterRequest(
     val namaUser: String,
     @field:Json(name = "nomorHp")
     val nomorHp: String,
+    @field:Json(name = "namaToko")
+    val namaToko: String,
     @field:Json(name = "password")
     val password: String
 )

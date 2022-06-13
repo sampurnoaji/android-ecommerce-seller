@@ -11,6 +11,7 @@ import id.io.android.olebsai.R
 import id.io.android.olebsai.core.BaseFragment
 import id.io.android.olebsai.databinding.FragmentAccountBinding
 import id.io.android.olebsai.presentation.user.login.LoginActivity
+import id.io.android.olebsai.util.ui.Dialog
 import id.io.android.olebsai.util.viewBinding
 
 @AndroidEntryPoint
@@ -48,16 +49,17 @@ class AccountFragment :
     }
 
     private fun showLogoutDialog() {
-        showDialog(
-            message = resources.getString(R.string.logout_message),
-            negativeButton = resources.getString(R.string.out),
-            negativeAction = {
+        Dialog(
+            context = requireContext(),
+            message = getString(R.string.logout_message),
+            positiveButtonText = getString(R.string.logout),
+            positiveAction = {
                 vm.logout()
                 val intent = Intent(requireActivity(), LoginActivity::class.java)
                 startActivity(intent)
                 requireActivity().finish()
             },
-            positiveButton = resources.getString(R.string.cancel),
-        )
+            negativeButtonText = getString(R.string.cancel)
+        ).show()
     }
 }

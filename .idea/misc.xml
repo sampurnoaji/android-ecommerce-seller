@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
@@ -29,6 +28,7 @@
         <entry key="app/src/main/res/layout/activity_product_detail.xml" value="0.4244791666666667" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.335" />
         <entry key="app/src/main/res/layout/chip_order_status.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/dialog_alert.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.37764606265876377" />
         <entry key="app/src/main/res/layout/fragment_order.xml" value="0.1" />
@@ -45,10 +45,17 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.041423722913584544" />
+      </ProjectState>
+    </option>
   </component>
 </project>

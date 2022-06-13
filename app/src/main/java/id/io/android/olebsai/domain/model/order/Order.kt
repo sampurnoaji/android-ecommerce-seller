@@ -1,20 +1,33 @@
 package id.io.android.olebsai.domain.model.order
 
-import id.io.android.olebsai.R
-import id.io.android.olebsai.domain.model.product.Product
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Order(
-    val id: String,
+    val administrasi: Long,
+    val belanja: Long,
+    val estimasiSampai: String,
+    val headerId: String,
+    val kotaToko: String,
+    val namaJasaPengiriman: String,
+    val namaToko: String,
+    val nomorResi: String,
+    val ongkir: Long,
+    val servisJasaPengiriman: String,
     val status: Status,
-    val customerName: String,
-    val date: String,
-    val total: Long,
-    val products: List<Product>
-) {
-    enum class Status(val color: Int) {
-        NEW(android.R.color.darker_gray),
-        ONGOING(android.R.color.holo_blue_light),
-        FINISHED(R.color.green_primary),
-        COMPLAINED(R.color.red_primary)
+    val tglBayar: String,
+    val tglCheckout: String,
+    val tokoId: String,
+    val totalBayar: Long,
+    val nomorPesanan: String,
+) : Parcelable {
+    enum class Status(val status: String) {
+        BELUM_BAYAR("BELUM BAYAR"),
+        DIKEMAS("DIKEMAS"),
+        DIKIRIM("DIKIRIM"),
+        DITERIMA("DITERIMA"),
+        SELESAI("SELESAI"),
+        UNDEFINED(""),
     }
 }

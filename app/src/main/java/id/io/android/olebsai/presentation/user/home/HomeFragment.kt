@@ -1,13 +1,16 @@
 package id.io.android.olebsai.presentation.user.home
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import androidx.viewpager2.widget.ViewPager2.ORIENTATION_HORIZONTAL
-import coil.load
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
@@ -19,73 +22,114 @@ import id.io.android.olebsai.R
 import id.io.android.olebsai.core.BaseFragment
 import id.io.android.olebsai.databinding.FragmentHomeBinding
 import id.io.android.olebsai.presentation.event.BannerListAdapter
+import id.io.android.olebsai.presentation.shop.ShopViewModel
+import id.io.android.olebsai.presentation.shop.edit.ShopEditActivity
+import id.io.android.olebsai.presentation.user.login.LoginActivity
+import id.io.android.olebsai.util.dpToPx
+import id.io.android.olebsai.util.ui.Dialog
 import id.io.android.olebsai.util.viewBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home) {
 
-    override val binding: FragmentHomeBinding by viewBinding(FragmentHomeBinding::bind)
+    override val binding by viewBinding(FragmentHomeBinding::bind)
     override val vm: HomeViewModel by viewModels()
+    private val shopViewModel: ShopViewModel by viewModels()
 
+    private var carouselJob: Job? = null
     private val bannerListAdapter by lazy { BannerListAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupToolbar()
+        shopViewModel.getShopDetail()
 
+        observeViewModel()
+
+        setupActionView()
         setupDashBoardCard()
-        setupBannerList()
+        setupBannerCarousel(vm.images)
 
         initProductChart()
         setProductChartData()
     }
 
-    private fun setupToolbar() {
-        binding.toolbar.title = "Bejo Shop"
-        binding.expandedImage.load("https://picsum.photos/id/1043/5184/3456")
+    private val launcher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                shopViewModel.getShopDetail()
+            }
+        }
+
+    private fun observeViewModel() {
+        binding.tvUsername.text = getString(R.string.home_hello_username, vm.user?.username)
+
+        shopViewModel.shopDetailResult.observe(
+            onLoading = {},
+            onSuccess = { shop ->
+                shop?.let {
+                    binding.tvShop.text = it.name
+                    binding.shopStatus.isVisible = !it.isApproved()
+                    shopViewModel.saveShop(it)
+                }
+            },
+            onError = {}
+        )
+    }
+
+    private fun setupActionView() {
+        binding.imgLogout.setOnClickListener {
+            showLogoutDialog()
+        }
+
+        binding.imgEdit.setOnClickListener {
+            ShopEditActivity.start(requireContext(), launcher)
+        }
     }
 
     private fun setupDashBoardCard() {
-        binding.card1.setValue("1")
-        binding.card2.setValue("3")
-        binding.card3.setValue("5")
+        with(binding.sectionOrder) {
+            this.tvOrderNew.text = "3"
+            this.tvOrderProcess.text = "4"
+            this.tvOrderComplain.text = "1"
+            this.tvOrderFinish.text = "11"
+        }
     }
 
-    private fun setupBannerList() {
-        val banners = listOf(
-            "https://picsum.photos/id/1043/5184/3456",
-            "https://picsum.photos/id/1039/6945/4635",
-            "https://picsum.photos/id/1038/3914/5863",
-            "https://picsum.photos/id/1037/5760/3840",
-        )
+    private fun setupBannerCarousel(images: List<Int>) {
         with(binding.vpBanner) {
             adapter = bannerListAdapter
-            clipToPadding = false
-            clipChildren = false
             offscreenPageLimit = 2
 
-            val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.view_pager_page_margin)
-            val offsetPx = resources.getDimensionPixelOffset(R.dimen.view_pager_page_offset)
+            val previewOffsetPx = 30.dpToPx(resources.displayMetrics)
+            setPadding(previewOffsetPx, 0, previewOffsetPx, 0)
 
-            setPageTransformer { page, position ->
-                val viewPager = page.parent.parent as ViewPager2
-                val offset = position * -(2 * offsetPx + pageMarginPx)
-                if (viewPager.orientation == ORIENTATION_HORIZONTAL) {
-                    if (ViewCompat.getLayoutDirection(viewPager) == ViewCompat.LAYOUT_DIRECTION_RTL) {
-                        page.translationX = -offset
-                    } else {
-                        page.translationX = offset
+            val pageMarginPx = 8.dpToPx(resources.displayMetrics)
+            val marginTransformer = MarginPageTransformer(pageMarginPx)
+            setPageTransformer(marginTransformer)
+
+            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    carouselJob?.cancel()
+                    carouselJob = lifecycleScope.launch(Dispatchers.Main) {
+                        delay(3000)
+                        currentItem =
+                            if (position >= images.size - 1) 0
+                            else position + 1
                     }
-                } else {
-                    page.translationY = offset
                 }
-            }
+            })
         }
-        bannerListAdapter.submitList(banners)
+        bannerListAdapter.submitList(images)
     }
 
     private fun initProductChart() {
-        with(binding.productChart) {
+        with(binding.sectionChart.productChart) {
             setNoDataText(getString(R.string.empty_data))
             setExtraOffsets(0f, 0f, 0f, 8f)
 
@@ -116,9 +160,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
             "7 Mei 2020" to 120,
         )
 
-        if (soldProducts.isEmpty()) return
-
-        with(binding.productChart) {
+        with(binding.sectionChart.productChart) {
             clear()
             val xLabels = mutableListOf<String>()
             val entries = mutableListOf<Entry>()
@@ -147,5 +189,29 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
             data = LineData(dataSet)
             invalidate()
         }
+    }
+
+    private fun showLogoutDialog() {
+        Dialog(
+            context = requireContext(),
+            message = getString(R.string.logout_message),
+            positiveButtonText = getString(R.string.logout),
+            positiveAction = {
+                vm.logout()
+                startActivity(Intent(requireActivity(), LoginActivity::class.java))
+                requireActivity().finish()
+            },
+            negativeButtonText = getString(R.string.cancel)
+        ).show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        carouselJob?.start()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        carouselJob?.cancel()
     }
 }

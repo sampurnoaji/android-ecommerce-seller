@@ -7,6 +7,10 @@
     </declare-styleable>
 
     <declare-styleable name="StatusChipView">
-        <attr name="status" format="integer" />
+        <attr name="status">
+            <flag name="red" value="0x00000001" />
+            <flag name="green" value="0x00000002" />
+            <flag name="blue" value="0x00000003" />
+        </attr>
     </declare-styleable>
 </resources>

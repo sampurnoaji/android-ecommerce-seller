@@ -1,9 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <color name="black">#FF000000</color>
+    <color name="primary_70">#B00020</color>
+    <color name="primary_50">#CD002E</color>
+    <color name="primary_10">#FFEBEF</color>
 
+    <color name="blue_gray_50">#7D82A0</color>
+    <color name="blue_gray_10">#F3F4F6</color>
+
+    <color name="blue_black_50">#252525</color>
+
+    <color name="grey_10">#C0C0C0</color>
+
+    <color name="red_50">#D64219</color>
+    <color name="red_10">#FDE8CF</color>
+
+    <color name="error">#FF5454</color>
+
+    <color name="green_50">#63BC1E</color>
+    <color name="green_10">#ECFCD0</color>
+
+    <color name="blue_50">#1474E3</color>
+    <color name="blue_10">#D0EEFD</color>
+
+    <color name="orange_50">#FFB764</color>
+    <color name="orange_10">#FFF3D8</color>
+
+    <color name="yellow_50">#F9D758</color>
+
+    <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_60">#99FFFFFF</color>
+
+    <color name="primaryLightColor">#82f7ff</color>
+    <color name="primaryDarkColor">#0094cc</color>
+    <color name="secondaryColor">#5c6bc0</color>
+    <color name="secondaryLightColor">#8e99f3</color>
+    <color name="secondaryDarkColor">#26418f</color>
+
+    <color name="background">#f7f8fa</color>
 
     <color name="primary_light">#6ba0ff</color>
     <color name="primary_normal">#0772ff</color>
@@ -22,6 +56,9 @@
 
     <color name="red_primary">#E43835</color>
     <color name="red_primary_20">#33E43835</color>
+
+    <color name="orange_primary">#FF9800</color>
+    <color name="orange_primary_20">#33FF9800</color>
 
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/white</color>
 </resources>

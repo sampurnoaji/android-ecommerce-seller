@@ -1,18 +1,21 @@
 package id.io.android.olebsai.domain.usecase.user.login
 
-import id.io.android.olebsai.core.BaseUseCase
+import id.io.android.olebsai.core.UseCase
+import id.io.android.olebsai.domain.model.user.User
 import id.io.android.olebsai.domain.repository.UserRepository
 import id.io.android.olebsai.presentation.user.login.LoginParams
 import id.io.android.olebsai.util.LoadState
 import javax.inject.Inject
 
 class LoginUseCase @Inject constructor(private val repository: UserRepository) :
-    BaseUseCase<LoginParams, LoadState<String>> {
-    override suspend fun invoke(params: LoginParams): LoadState<String> {
+    UseCase<LoginParams, LoadState<Pair<User, String>>> {
+
+    override suspend fun invoke(params: LoginParams): LoadState<Pair<User, String>> {
         val result = repository.login(params)
         if (result is LoadState.Success) {
+            repository.saveUser(result.data.first)
             repository.setLoggedIn(true)
-            repository.setToken(result.data)
+            repository.setToken(result.data.second)
         }
         return result
     }

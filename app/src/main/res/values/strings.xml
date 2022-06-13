@@ -1,51 +1,85 @@
 <resources>
     <string name="menu_home">Beranda</string>
+    <string name="menu_shop">Toko</string>
     <string name="menu_order">Pesanan</string>
     <string name="menu_product">Produk</string>
     <string name="menu_account">Akun</string>
 
-    <string name="out">Keluar</string>
+    <string name="action">Aksi</string>
     <string name="cancel">Batal</string>
+    <string name="close">Tutup</string>
     <string name="verify">Verifikasi</string>
     <string name="delete">Hapus</string>
     <string name="edit">Ubah</string>
+    <string name="finish">Selesai</string>
+    <string name="process">Proses</string>
+    <string name="see">Lihat</string>
+    <string name="send">Kirim</string>
+    <string name="try_again">Coba lagi</string>
     <string name="view_more">Lihat selengkapnya</string>
 
     <string name="all">Semua</string>
     <string name="detail">Detail</string>
+    <string name="error">Tarjadi kesalahan</string>
     <string name="setting">Pengaturan</string>
 
     <string name="empty_data">Tidak ada data</string>
     <string name="x_other_item">%d item lainnya</string>
+    <string name="zero">0</string>
 
     <string name="email">Email</string>
     <string name="name">Nama</string>
-    <string name="phone_number">No Telepon</string>
+    <string name="phone_number">No HP</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="total">Total</string>
 
+    <string name="form_email_invalid">Email tidak valid</string>
+    <string name="form_fill_x">Lengkapi %s</string>
+    <string name="form_required_field">Wajib diisi</string>
+    <string name="form_phone_invalid">No HP tidak valid</string>
+    <string name="form_password_not_equal">Password tidak sama</string>
+
+    <string name="landing_message">Belanja hemat, mudah, dan nyaman hanya dengan sekali klik</string>
+
+    <string name="order">Pesanan</string>
+    <string name="order_complained">Komplain</string>
+    <string name="order_date_checkout">Tanggal Pesanan</string>
+    <string name="order_date_paid">Tanggal Dibayar</string>
+    <string name="order_deliver">Kirim barang</string>
+    <string name="order_deliver_success">Berhasil mengubah status barang menjadi dikirim</string>
+    <string name="order_deliver_failed">Berhasil mengubah status barang menjadi dikirim</string>
+    <string name="order_empty">Pesanan Kosong</string>
+    <string name="order_finished">Selesai</string>
+    <string name="order_nomor_resi">Nomor resi</string>
+    <string name="order_nomor_resi_input">Masukkan nomor resi</string>
     <string name="order_new">Baru</string>
     <string name="order_ongoing">Diproses</string>
-    <string name="order_finished">Selesai</string>
-    <string name="order_complained">Komplain</string>
+    <string name="order_product_ordered">Produk yang dibeli</string>
+    <string name="checkout_total">Total Tagihan</string>
     <string name="order_search">Cari pesanan</string>
 
+    <string name="home_hello_username">Halo, %s</string>
     <string name="home_order_new">Pesanan Baru</string>
     <string name="home_banner">Banner</string>
+    <string name="home_view_more">Lihat Semua</string>
 
     <string name="login">Login</string>
     <string name="login_underline"><u>Login</u></string>
-    <string name="login_header">Selamat Datang!</string>
-    <string name="login_desc">Masuk untuk melanjutkan</string>
+    <string name="login_header">Selamat datang!</string>
+    <string name="login_desc">Kamu dapat melanjutkan dari bagian terakhir yang kamu tinggalkan.</string>
     <string name="login_error_password_length">Password minimal 6 digit</string>
+    <string name="login_forgot_password">Lupa password</string>
+    <string name="login_error_form_empty">Username dan Password harus diisi</string>
+    <string name="login_error_form_invalid">Username/Password salah</string>
 
     <string name="register">Daftar</string>
     <string name="register_underline"><u>Daftar</u></string>
-    <string name="register_header">Daftarkan Tokomu!</string>
-    <string name="register_desc">Masukkan informasi awal akunmu</string>
+    <string name="register_header">Selamat datang di Oleb Sai!</string>
+    <string name="register_desc">Hai, nampaknya kamu pengguna baru. Kamu dapat menggunakan aplikasi setelah mendaftar.</string>
     <string name="register_success">Berhasil membuat akun, silakan login!</string>
-    <string name="register_error_fill_form">Lengkapi informasi akun</string>
+    <string name="register_phone_helper">Contoh: 082123456789</string>
+    <string name="register_repeat_password">Ulangi Password</string>
 
     <string name="otp_title">Input OTP</string>
     <string name="otp_header">Masukkan kode OTP di email</string>
@@ -55,14 +89,105 @@
     <string name="logout">Keluar</string>
     <string name="logout_message">Apakah Anda ingin keluar akun?</string>
 
-    <string name="shop">Toko</string>
-    <string name="shop_name">Nama Toko</string>
+    <string name="forgot_password_header">Cek email kamu!</string>
+    <string name="forgot_password_desc">Kami akan mengirimkan link untuk mereset password kamu.</string>
 
+    <string name="shop">Toko</string>
+    <string name="shop_edit">Ubah Toko</string>
+    <string name="shop_mine">Toko Saya</string>
+    <string name="shop_name">Nama Toko</string>
+    <string name="shop_note">Keterangan</string>
+    <string name="shop_status_registration">Dalam Peninjauan</string>
+    <string name="shop_status_registration_info">Toko Anda masih berstatus Dalam Peninjauan</string>
+
+    <string name="address">Alamat</string>
+    <string name="address_full">Alamat Lengkap</string>
+    <string name="address_district">Kota</string>
+    <string name="address_postal_code">Kode Pos</string>
+    <string name="address_province">Provinsi</string>
+    <string name="address_sub_district">Kecamatan</string>
+
+    <string name="profile_edit">Edit Profil</string>
+    <string name="profile_edit_error_get_address">Gagal mendapatkan alamat</string>
+
+    <string name="product">Produk</string>
+    <string name="product_add">Tambah produk</string>
+    <string name="product_approval_waiting">Menunggu Approval</string>
+    <string name="product_approval_rejected">Produk Ditolak</string>
+    <string name="product_approval_edit_waiting">Menunggu Update</string>
+    <string name="product_create_success">Produk berhasil ditambahkan</string>
+    <string name="product_edit">Edit produk</string>
+    <string name="product_edit_success">Produk berhasil diperbaharui</string>
+    <string name="product_list">Daftar Produk</string>
+    <string name="product_image">Foto Produk</string>
+    <string name="product_image_add">Tambah Foto Produk</string>
+    <string name="product_image_add_success">Berhasil menambah Foto Produk</string>
+    <string name="product_image_delete_success">Berhasil menghapus Foto Produk</string>
+    <string name="product_image_over_2mb">Ukuran foto tidak boleh melebihi 2MB</string>
+    <string name="product_name">Nama Produk</string>
     <string name="product_desc">Deskripsi</string>
+    <string name="product_detail">Detail Produk</string>
+    <string name="product_category">Kategori</string>
     <string name="product_stock">Stok</string>
     <string name="product_stock_semicolon">Stok:</string>
+    <string name="product_stock_edit">Ubah Stok</string>
+    <string name="product_subcategory">Sub Kategori</string>
     <string name="product_price">Harga</string>
+    <string name="product_price_promo">Harga Promo</string>
+    <string name="product_price_promo_label">Aktifkan Harga Promo</string>
     <string name="product_search">Cari produk</string>
-    <string name="product_add">Tambah produk</string>
     <string name="product_sold_statistic">Statistik Produk Terjual</string>
+    <string name="product_weight">Berat (Dalam gram)</string>
+    <string name="product_weight_helper">1 kg = 1000 gram</string>
+
+    <string name="category_craft">Kerajinan</string>
+    <string name="category_fashion">Fashion</string>
+    <string name="category_culinary">Kuliner</string>
+
+    <string name="promo_active">Promo Sekarang</string>
+
+    <string name="courier">Jasa Pengiriman</string>
+    <string name="title_activity_product_image">ProductImageActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
+        volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
+        dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
+        litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse blandit eleifend
+        diam, vel rutrum tellus vulputate quis. Aliquam eget libero aliquet, imperdiet nisl a,
+        ornare ex. Sed rhoncus est ut libero porta lobortis. Fusce in dictum tellus.\n\n
+        Suspendisse interdum ornare ante. Aliquam nec cursus lorem. Morbi id magna felis. Vivamus
+        egestas, est a condimentum egestas, turpis nisl iaculis ipsum, in dictum tellus dolor sed
+        neque. Morbi tellus erat, dapibus ut sem a, iaculis tincidunt dui. Interdum et malesuada
+        fames ac ante ipsum primis in faucibus. Curabitur et eros porttitor, ultricies urna vitae,
+        molestie nibh. Phasellus at commodo eros, non aliquet metus. Sed maximus nisl nec dolor
+        bibendum, vel congue leo egestas.\n\n
+        Sed interdum tortor nibh, in sagittis risus mollis quis. Curabitur mi odio, condimentum sit
+        amet auctor at, mollis non turpis. Nullam pretium libero vestibulum, finibus orci vel,
+        molestie quam. Fusce blandit tincidunt nulla, quis sollicitudin libero facilisis et. Integer
+        interdum nunc ligula, et fermentum metus hendrerit id. Vestibulum lectus felis, dictum at
+        lacinia sit amet, tristique id quam. Cras eu consequat dui. Suspendisse sodales nunc ligula,
+        in lobortis sem porta sed. Integer id ultrices magna, in luctus elit. Sed a pellentesque
+        est.\n\n
+        Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
+        Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
+        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
+        quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
+        ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a
+        placerat diam. Etiam vulputate dignissim convallis. Integer faucibus mauris sit amet finibus
+        convallis.\n\n
+        Phasellus in aliquet mi. Pellentesque habitant morbi tristique senectus et netus et
+        malesuada fames ac turpis egestas. In volutpat arcu ut felis sagittis, in finibus massa
+        gravida. Pellentesque id tellus orci. Integer dictum, lorem sed efficitur ullamcorper,
+        libero justo consectetur ipsum, in mollis nisl ex sed nisl. Donec maximus ullamcorper
+        sodales. Praesent bibendum rhoncus tellus nec feugiat. In a ornare nulla. Donec rhoncus
+        libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
+        vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
+    </string>
 </resources>

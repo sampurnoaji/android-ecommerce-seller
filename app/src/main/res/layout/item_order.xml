@@ -4,125 +4,116 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="8dp">
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginTop="8dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bg_light"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?selectableItemBackground">
+        android:padding="16dp">
 
         <TextView
-            android:id="@+id/tvId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="8dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="0dp"
-            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-            android:textColor="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:background="@color/bg_normal"
-            tools:text="#ID12345" />
-
-        <TextView
-            android:id="@+id/tvCustomerName"
+            android:id="@+id/tvShopName"
+            style="@style/Text.Heading4.SemiBold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp"
-            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
-            app:layout_constraintEnd_toStartOf="@+id/labelTotal"
+            app:layout_constraintEnd_toStartOf="@+id/tvOrderId"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvId"
-            tools:text="Joko Bejo Joko Bejo Joko Bejo Joko Bejo" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="MULIA JASA" />
 
         <TextView
-            android:id="@+id/tvDate"
+            android:id="@+id/tvOrderId"
+            style="@style/Text.Heading6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="0dp"
-            android:paddingEnd="16dp"
-            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/tvId"
+            app:layout_constraintBottom_toBottomOf="@+id/tvShopName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvId"
-            tools:text="14 Des 2022" />
+            app:layout_constraintTop_toTopOf="@+id/tvShopName"
+            tools:text="#1231modemd23mdoeimdeded" />
+
+        <TextView
+            android:id="@+id/labelOrderDate"
+            style="@style/Text.Heading6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/order_date_checkout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvShopName" />
+
+        <TextView
+            android:id="@+id/tvOrderDate"
+            style="@style/Text.Heading5.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/labelOrderDate"
+            tools:text="12 Sep 2022" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            style="@style/Text.Heading5.SemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/text_chip_orange"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp"
+            android:textColor="@color/orange_primary"
+            app:layout_constraintBottom_toBottomOf="@+id/tvOrderDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/labelOrderDate"
+            tools:text="BELUM BAYAR" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintTop_toBottomOf="@+id/tvOrderDate" />
+
+        <TextView
+            android:id="@+id/tvCourierName"
+            style="@style/Text.Heading5.Medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/labelTotal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            tools:text="Citra Van Titipan Kilat (TIKI)" />
+
+        <TextView
+            android:id="@+id/tvCourierEstimate"
+            style="@style/Text.Heading6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/labelTotal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCourierName"
+            tools:text="REG 5-6 hari" />
 
         <TextView
             android:id="@+id/labelTotal"
-            style="@style/TextViewCaption"
+            style="@style/Text.Heading6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:text="@string/total"
-            app:layout_constraintBottom_toBottomOf="@+id/tvTotal"
-            app:layout_constraintEnd_toStartOf="@+id/tvTotal"
-            app:layout_constraintTop_toTopOf="@+id/tvTotal" />
+            android:layout_marginTop="8dp"
+            android:text="@string/checkout_total"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
 
         <TextView
             android:id="@+id/tvTotal"
+            style="@style/Text.Heading5.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp"
-            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+            android:textColor="?colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvId"
-            tools:text="Rp 167.000" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray"
-            app:layout_constraintTop_toBottomOf="@+id/tvTotal" />
-
-        <TextView
-            android:id="@+id/tvProducts"
-            style="@style/TextViewCaption"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:lineSpacingExtra="4dp"
-            android:maxLines="2"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/tvOtherProducts"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTotal"
-            tools:text="1 x Roti Bakar\n2 x Martaboy Telur\n2 x Martaboy Telur" />
-
-        <TextView
-            android:id="@+id/tvOtherProducts"
-            style="@style/TextViewCaption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:textStyle="italic"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/imgChevronRight"
-            app:layout_constraintEnd_toStartOf="@+id/imgChevronRight"
-            app:layout_constraintTop_toTopOf="@+id/imgChevronRight"
-            tools:text="@string/x_other_item"
-            tools:visibility="visible" />
-
-        <ImageView
-            android:id="@+id/imgChevronRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_baseline_chevron_right_18"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTotal"
-            app:tint="?colorOnPrimary" />
+            app:layout_constraintTop_toBottomOf="@+id/labelTotal"
+            tools:text="Rp 123.000" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

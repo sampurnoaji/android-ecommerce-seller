@@ -7,6 +7,6 @@
     android:paddingVertical="4dp"
     android:textAppearance="@style/TextAppearance.Material3.BodySmall"
     android:textSize="11sp"
-    tools:background="@drawable/chip_order_status_green"
+    tools:background="@drawable/chip_status_green"
     tools:text="Dikirim"
     tools:textColor="@color/green_primary" />
