@@ -11,6 +11,7 @@ import id.io.android.olebsai.core.BaseActivity
 import id.io.android.olebsai.databinding.ActivityMainBinding
 import id.io.android.olebsai.presentation.order.OrderFragment
 import id.io.android.olebsai.presentation.product.list.ProductFragment
+import id.io.android.olebsai.presentation.shop.ShopFragment
 import id.io.android.olebsai.presentation.user.account.AccountFragment
 import id.io.android.olebsai.presentation.user.home.HomeFragment
 import id.io.android.olebsai.presentation.user.login.LoginActivity
@@ -23,10 +24,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override val vm: MainViewModel by viewModels()
 
     private val homeFragment by lazy { HomeFragment() }
+    private val shopFragment by lazy { ShopFragment() }
     private val orderFragment by lazy { OrderFragment() }
     private val productFragment by lazy { ProductFragment() }
     private val accountFragment by lazy { AccountFragment() }
-    private var currentFragment: Fragment = orderFragment
+    private var currentFragment: Fragment = shopFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +44,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 //                    showFragment(homeFragment)
 //                    true
 //                }
+                R.id.menuShop -> {
+                    showFragment(shopFragment)
+                    true
+                }
                 R.id.menuOrder -> {
                     showFragment(orderFragment)
                     true
@@ -61,7 +67,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun onBackPressed() {
         //todo: back pressed
-        if (currentFragment != homeFragment) binding.bottomNavigation.selectedItemId = R.id.menuOrder
+        if (currentFragment != homeFragment) binding.bottomNavigation.selectedItemId =
+            R.id.menuOrder
         else super.onBackPressed()
     }
 

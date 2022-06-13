@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<!--    <item
-        android:id="@+id/menuHome"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="@string/menu_home" />-->
+    <!--    <item
+            android:id="@+id/menuHome"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="@string/menu_home" />-->
+    <item
+        android:id="@+id/menuShop"
+        android:icon="@drawable/ic_baseline_shopping_cart_checkout_24"
+        android:title="@string/menu_shop" />
     <item
         android:id="@+id/menuOrder"
         android:icon="@drawable/ic_baseline_list_alt_24"

@@ -43,13 +43,16 @@
         <item name="android:drawablePadding">4dp</item>
     </style>
 
-    <style name="TextViewBody" parent="TextAppearance.Material3.TitleSmall">
+    <style name="TextViewTitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">?colorOnPrimary</item>
+    </style>
+
+    <style name="TextViewBodyMedium" parent="TextAppearance.Material3.BodyMedium">
         <item name="android:textColor">?colorOnPrimary</item>
     </style>
 
     <style name="TextViewCaption" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textColor">@color/white_60</item>
-        <item name="android:textSize">11sp</item>
     </style>
 
     <style name="PrimaryButton" parent="Widget.MaterialComponents.Button">
