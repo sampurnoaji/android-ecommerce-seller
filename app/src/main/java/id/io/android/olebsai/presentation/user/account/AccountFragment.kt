@@ -2,7 +2,9 @@ package id.io.android.olebsai.presentation.user.account
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
+import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import id.io.android.olebsai.R
@@ -24,18 +26,38 @@ class AccountFragment :
     }
 
     private fun setupActionView() {
-//        binding.tvLogout.setOnClickListener {
-//            showDialog(
-//                message = resources.getString(R.string.logout_message),
-//                negativeButton = resources.getString(R.string.out),
-//                negativeAction = {
-//                    vm.logout()
-//                    val intent = Intent(requireActivity(), LoginActivity::class.java)
-//                    startActivity(intent)
-//                    requireActivity().finish()
-//                },
-//                positiveButton = resources.getString(R.string.cancel),
-//            )
-//        }
+        binding.imgSetting.setOnClickListener {
+            showSettingMenu(it)
+        }
+    }
+
+    private fun showSettingMenu(view: View) {
+        PopupMenu(requireContext(), view).apply {
+            menu.add(Menu.NONE, 1, 1, getString(R.string.logout))
+            show()
+            setOnMenuItemClickListener { menu ->
+                when (menu.itemId) {
+                    1 -> {
+                        showLogoutDialog()
+                        true
+                    }
+                    else -> false
+                }
+            }
+        }
+    }
+
+    private fun showLogoutDialog() {
+        showDialog(
+            message = resources.getString(R.string.logout_message),
+            negativeButton = resources.getString(R.string.out),
+            negativeAction = {
+                vm.logout()
+                val intent = Intent(requireActivity(), LoginActivity::class.java)
+                startActivity(intent)
+                requireActivity().finish()
+            },
+            positiveButton = resources.getString(R.string.cancel),
+        )
     }
 }
