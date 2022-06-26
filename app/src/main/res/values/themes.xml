@@ -15,7 +15,6 @@
         <item name="materialButtonStyle">@style/PrimaryButton</item>
         <item name="textInputStyle">@style/TextInputLayout</item>
         <item name="android:textColor">?colorOnPrimary</item>
-        <item name="materialAlertDialogTheme">@style/AlertDialog</item>
         <item name="popupMenuStyle">@style/PopupMenu</item>
     </style>
 
@@ -72,11 +71,6 @@
         <item name="hintTextColor">@color/white</item>
         <item name="boxStrokeColor">@color/white</item>
         <item name="endIconTint">?colorOnPrimary</item>
-    </style>
-
-    <style name="AlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
-        <item name="colorSurface">@color/bg_normal</item>
-        <item name="colorOnSurface">@color/white</item>
     </style>
 
     <style name="PopupMenu" parent="Widget.AppCompat.PopupMenu">
