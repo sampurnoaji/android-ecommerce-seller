@@ -10,13 +10,17 @@
         <item name="colorSecondaryVariant">@color/secondary_dark</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="materialButtonStyle">@style/PrimaryButton</item>
         <item name="textInputStyle">@style/TextInputLayout</item>
         <item name="android:textColor">?colorOnPrimary</item>
         <item name="materialAlertDialogTheme">@style/AlertDialog</item>
         <item name="popupMenuStyle">@style/PopupMenu</item>
+    </style>
+
+    <style name="ColorPrimaryTheme" parent="Theme.Seller">
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
     </style>
 
     <style name="TextView" parent="Widget.AppCompat.TextView">
@@ -63,10 +67,11 @@
     </style>
 
     <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:theme">@style/WhiteTheme</item>
         <item name="android:textColorHint">@color/white_60</item>
         <item name="hintTextColor">@color/white</item>
         <item name="boxStrokeColor">@color/white</item>
-        <item name="android:theme">@style/WhiteTheme</item>
+        <item name="endIconTint">?colorOnPrimary</item>
     </style>
 
     <style name="AlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">

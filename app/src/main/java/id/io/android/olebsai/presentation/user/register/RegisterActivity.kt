@@ -36,8 +36,16 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
             vm.onPhoneNumberChanged(text.toString())
             binding.tvError.visibility = View.GONE
         }
+        binding.etShopName.doOnTextChanged { text, _, _, _ ->
+            vm.onShopNameChanged(text.toString())
+            binding.tvError.visibility = View.GONE
+        }
         binding.etPassword.doOnTextChanged { text, _, _, _ ->
             vm.onPasswordChanged(text.toString())
+            binding.tvError.visibility = View.GONE
+        }
+        binding.etRepeatPassword.doOnTextChanged { text, _, _, _ ->
+            vm.onRepeatPasswordChanged(text.toString())
             binding.tvError.visibility = View.GONE
         }
 
@@ -54,8 +62,16 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
                 setErrorText(getString(R.string.register_error_fill_form))
                 return@setOnClickListener
             }
+            if (vm.shopName.isEmpty()) {
+                setErrorText(getString(R.string.register_error_fill_form))
+                return@setOnClickListener
+            }
             if (vm.password.isEmpty() || vm.password.length < PASSWORD_LENGTH) {
                 setErrorText(getString(R.string.login_error_password_length))
+                return@setOnClickListener
+            }
+            if (vm.repeatPassword != vm.password) {
+                setErrorText(getString(R.string.register_error_repeat_password))
                 return@setOnClickListener
             }
             vm.register()

@@ -24,7 +24,8 @@
             android:exported="false" />
         <activity
             android:name="id.io.android.olebsai.presentation.user.login.LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/ColorPrimaryTheme"/>
         <activity
             android:name="id.io.android.olebsai.presentation.MainActivity"
             android:exported="true">

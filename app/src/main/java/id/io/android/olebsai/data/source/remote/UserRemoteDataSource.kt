@@ -19,6 +19,7 @@ class UserRemoteDataSource @Inject constructor(private val api: ApiService) : Re
                     email = params.email,
                     namaUser = params.name,
                     nomorHp = params.phoneNumber,
+                    namaToko = params.shopName,
                     password = params.password
                 )
             ).message.orEmpty()

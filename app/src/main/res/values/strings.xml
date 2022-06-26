@@ -47,6 +47,8 @@
     <string name="register_desc">Masukkan informasi awal akunmu</string>
     <string name="register_success">Berhasil membuat akun, silakan login!</string>
     <string name="register_error_fill_form">Lengkapi informasi akun</string>
+    <string name="register_error_repeat_password">Password tidak sama</string>
+    <string name="register_repeat_password">Ulangi Password</string>
 
     <string name="otp_title">Input OTP</string>
     <string name="otp_header">Masukkan kode OTP di email</string>

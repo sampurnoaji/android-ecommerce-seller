@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
     tools:context=".presentation.shop.ShopFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -17,7 +16,8 @@
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="@string/shop_mine" />
+            app:title="@string/shop_mine"
+            app:titleTextColor="?colorOnPrimary" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
