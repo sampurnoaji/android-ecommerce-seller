@@ -14,8 +14,6 @@
         <!-- Customize your theme here. -->
         <item name="materialButtonStyle">@style/PrimaryButton</item>
         <item name="textInputStyle">@style/TextInputLayout</item>
-        <item name="android:textColor">?colorOnPrimary</item>
-        <item name="popupMenuStyle">@style/PopupMenu</item>
     </style>
 
     <style name="ColorPrimaryTheme" parent="Theme.Seller">
@@ -71,10 +69,6 @@
         <item name="hintTextColor">@color/white</item>
         <item name="boxStrokeColor">@color/white</item>
         <item name="endIconTint">?colorOnPrimary</item>
-    </style>
-
-    <style name="PopupMenu" parent="Widget.AppCompat.PopupMenu">
-        <item name="android:popupBackground">@drawable/bg_popup_menu</item>
     </style>
 
     <style name="WhiteTheme">
