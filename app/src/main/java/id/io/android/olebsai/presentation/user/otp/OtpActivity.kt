@@ -11,6 +11,7 @@ import id.io.android.olebsai.core.BaseActivity
 import id.io.android.olebsai.databinding.ActivityOtpBinding
 import id.io.android.olebsai.presentation.user.login.LoginActivity
 import id.io.android.olebsai.util.UserConstant.OTP_LENGTH
+import id.io.android.olebsai.util.ui.Dialog
 import id.io.android.olebsai.util.viewBinding
 
 @AndroidEntryPoint
@@ -39,16 +40,17 @@ class OtpActivity : BaseActivity<ActivityOtpBinding, OtpViewModel>() {
                 }
                 return@setOnClickListener
             }
-            showDialog(
+            Dialog(
+                context = this,
                 message = getString(R.string.register_success),
-                positiveButton = getString(android.R.string.ok),
+                positiveButtonText = getString(android.R.string.ok),
                 positiveAction = {
                     val intent = Intent(this, LoginActivity::class.java).apply {
                         flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                     }
                     startActivity(intent)
                 }
-            )
+            ).show()
         }
     }
 }

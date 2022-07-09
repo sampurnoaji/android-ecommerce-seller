@@ -9,6 +9,7 @@ import id.io.android.olebsai.R
 import id.io.android.olebsai.core.BaseActivity
 import id.io.android.olebsai.databinding.ActivityRegisterBinding
 import id.io.android.olebsai.util.UserConstant.PASSWORD_LENGTH
+import id.io.android.olebsai.util.ui.Dialog
 import id.io.android.olebsai.util.viewBinding
 
 @AndroidEntryPoint
@@ -85,18 +86,20 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
         vm.register.observe(
             loadingProgressBar = binding.pbLoading,
             success = {
-                showDialog(
+                Dialog(
+                    context = this,
                     message = it,
-                    positiveButton = getString(R.string.login),
+                    positiveButtonText = getString(R.string.login),
                     positiveAction = {
                         finish()
-                    })
+                    }).show()
             },
             error = {
-                showDialog(
+                Dialog(
+                    context = this,
                     message = it.orEmpty(),
-                    positiveButton = getString(android.R.string.ok)
-                )
+                    positiveButtonText = getString(android.R.string.ok)
+                ).show()
             },
         )
     }

@@ -12,6 +12,7 @@ import id.io.android.olebsai.databinding.ActivityLoginBinding
 import id.io.android.olebsai.presentation.MainActivity
 import id.io.android.olebsai.presentation.user.register.RegisterActivity
 import id.io.android.olebsai.util.UserConstant
+import id.io.android.olebsai.util.ui.Dialog
 import id.io.android.olebsai.util.viewBinding
 
 @AndroidEntryPoint
@@ -62,10 +63,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
                 finish()
             },
             error = {
-                showDialog(
+                Dialog(
+                    context = this,
                     message = it.orEmpty(),
-                    positiveButton = getString(android.R.string.ok)
-                )
+                    positiveButtonText = getString(android.R.string.ok)
+                ).show()
             }
         )
     }
