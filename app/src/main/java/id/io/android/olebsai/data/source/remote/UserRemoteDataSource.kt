@@ -9,7 +9,7 @@ import id.io.android.olebsai.util.LoadState
 import id.io.android.olebsai.util.remote.ResponseHelper
 import javax.inject.Inject
 
-class UserRemoteDataSource @Inject constructor(private val api: ApiService) : ResponseHelper() {
+class UserRemoteDataSource @Inject constructor(private val api: UserService) : ResponseHelper() {
     suspend fun getUser(id: Int): UserResponse = api.getUser(id)
 
     suspend fun register(params: RegisterParams): LoadState<String> {
