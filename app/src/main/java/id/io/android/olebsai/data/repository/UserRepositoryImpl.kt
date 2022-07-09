@@ -36,4 +36,8 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun login(loginParams: LoginParams): LoadState<String> {
         return remoteDataSource.login(loginParams)
     }
+
+    override suspend fun loginWithOtp(loginParams: LoginParams): LoadState<String> {
+        return remoteDataSource.loginWithOtp(loginParams)
+    }
 }

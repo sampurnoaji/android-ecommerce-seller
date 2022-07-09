@@ -13,4 +13,5 @@ interface UserRepository {
     suspend fun getUser(id: Int): User
     suspend fun register(registerParams: RegisterParams): LoadState<String>
     suspend fun login(loginParams: LoginParams): LoadState<String>
+    suspend fun loginWithOtp(loginParams: LoginParams): LoadState<String>
 }

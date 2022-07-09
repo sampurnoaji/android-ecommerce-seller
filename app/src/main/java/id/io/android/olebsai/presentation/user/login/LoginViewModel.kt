@@ -15,10 +15,15 @@ class LoginViewModel @Inject constructor(private val userUseCases: UserUseCases)
 
     var email = ""
     var password = ""
+    var otp = ""
 
     private val _login = MutableLiveData<LoadState<String>>()
     val login: LiveData<LoadState<String>>
         get() = _login
+
+    private val _loginWithOtp = MutableLiveData<LoadState<String>>()
+    val loginWithOtp: LiveData<LoadState<String>>
+        get() = _loginWithOtp
 
     fun onEmailChanged(email: String) {
         this.email = email.trim()
@@ -35,6 +40,18 @@ class LoginViewModel @Inject constructor(private val userUseCases: UserUseCases)
                 LoginParams(
                     email = email,
                     password = password
+                )
+            )
+        }
+    }
+
+    fun loginWithOtp() {
+        _loginWithOtp.value = LoadState.Loading
+        viewModelScope.launch {
+            _loginWithOtp.value = userUseCases.loginWithOtpUseCase(
+                LoginParams(
+                    email = email,
+                    otp = otp
                 )
             )
         }

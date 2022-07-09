@@ -1,6 +1,7 @@
 package id.io.android.olebsai.data.source.remote
 
 import id.io.android.olebsai.data.model.request.user.login.LoginRequest
+import id.io.android.olebsai.data.model.request.user.login.LoginWithOtpRequest
 import id.io.android.olebsai.data.model.request.user.register.RegisterRequest
 import id.io.android.olebsai.data.model.response.user.UserResponse
 import id.io.android.olebsai.presentation.user.login.LoginParams
@@ -31,7 +32,18 @@ class UserRemoteDataSource @Inject constructor(private val api: UserService) : R
             api.login(
                 LoginRequest(
                     email = params.email,
-                    password = params.password
+                    password = params.password!!
+                )
+            ).data?.token.orEmpty()
+        }
+    }
+
+    suspend fun loginWithOtp(params: LoginParams): LoadState<String> {
+        return call {
+            api.loginWithOtp(
+                LoginWithOtpRequest(
+                    email = params.email,
+                    otp = params.otp!!
                 )
             ).data?.token.orEmpty()
         }
