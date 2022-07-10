@@ -1,4 +1,4 @@
-package id.io.android.olebsai.di
+package id.io.android.olebsai.di.interceptor
 
 import android.content.Context
 import dagger.hilt.android.qualifiers.ApplicationContext

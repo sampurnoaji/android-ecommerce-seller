@@ -66,8 +66,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     }
 
     override fun onBackPressed() {
-        //todo: back pressed
-        if (currentFragment != homeFragment) binding.bottomNavigation.selectedItemId =
+        if (currentFragment != shopFragment) binding.bottomNavigation.selectedItemId =
             R.id.menuOrder
         else super.onBackPressed()
     }

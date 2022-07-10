@@ -1,4 +1,4 @@
-package id.io.android.olebsai.data.source.remote
+package id.io.android.olebsai.data.source.remote.user
 
 import id.io.android.olebsai.data.model.request.user.login.LoginRequest
 import id.io.android.olebsai.data.model.request.user.login.LoginWithOtpRequest
@@ -14,16 +14,22 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface UserService {
+    companion object {
+        const val REGISTER = "v1/user/register/seller"
+        const val LOGIN = "login"
+        const val LOGIN_WITH_OTP = "login/otp"
+    }
+
     @Headers("mock:true")
     @GET("/api/user/{id}")
     suspend fun getUser(@Path("id") id: Int): UserResponse
 
-    @POST("v1/user/register/seller")
-    suspend fun register(@Body request: RegisterRequest): BaseResponse<Any>
+    @POST(REGISTER)
+    suspend fun register(@Body request: RegisterRequest): BaseResponse<String>
 
-    @POST("login")
+    @POST(LOGIN)
     suspend fun login(@Body request: LoginRequest): BaseResponse<LoginResponse>
 
-    @POST("login/otp")
+    @POST(LOGIN_WITH_OTP)
     suspend fun loginWithOtp(@Body request: LoginWithOtpRequest): BaseResponse<LoginWithOtpResponse>
 }

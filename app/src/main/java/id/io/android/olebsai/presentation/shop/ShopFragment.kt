@@ -29,8 +29,8 @@ class ShopFragment : BaseFragment<FragmentShopBinding, ShopViewModel>(R.layout.f
     }
 
     private fun observeShops() {
-        vm.shops.observe(viewLifecycleOwner) {
-            shopListAdapter.submitList(it)
+        vm.shop.observe(viewLifecycleOwner) {
+
         }
     }
 }
