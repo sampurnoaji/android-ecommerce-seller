@@ -62,7 +62,7 @@
     <string name="shop_name">Nama Toko</string>
 
     <string name="product_desc">Deskripsi</string>
-    <string name="product_stock">Stok</string>
+    <string name="product_stock">Stokd</string>
     <string name="product_stock_semicolon">Stok:</string>
     <string name="product_price">Harga</string>
     <string name="product_search">Cari produk</string>
