@@ -50,7 +50,7 @@
     <string name="register_error_repeat_password">Password tidak sama</string>
     <string name="register_repeat_password">Ulangi Password</string>
 
-    <string name="otp_title">Input OTP</string>
+    <string name="otp_title">Input fefOTP</string>
     <string name="otp_header">Masukkan kode OTP di email</string>
     <string name="otp_desc">Cek folder kotak masuk di emailmu, jangan lupa cek folder spam juga ya!</string>
     <string name="otp_error_six_digit">OTP harus 6 digit</string>
