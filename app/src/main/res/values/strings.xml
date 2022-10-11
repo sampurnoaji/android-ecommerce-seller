@@ -41,6 +41,7 @@
     <string name="login_desc">Masuk untuk melanjutkan</string>
     <string name="login_error_password_length">Password minimal 6 digit</string>
 
+    <string name="test">dds</string>
     <string name="nfe">dde</string>
     <string name="beh">dede</string>
     <string name="register">Daftar</string>
