@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import id.io.android.olebsai.R
 import id.io.android.olebsai.databinding.ItemOrderBinding
 import id.io.android.olebsai.domain.model.order.Order
+import id.io.android.olebsai.util.shortHourPattern
 import id.io.android.olebsai.util.toRupiah
+import id.io.android.olebsai.util.toUi
 
 class OrderListAdapter(private val listener: Listener) :
     ListAdapter<Order, OrderListAdapter.ContentViewHolder>(DIFF_UTIL) {
@@ -57,17 +59,17 @@ fun ItemOrderBinding.setValue(order: Order) {
     when (order.status) {
         Order.Status.SELESAI -> {
             tvStatus.setBackgroundResource(R.drawable.text_chip_green)
-            tvOrderDate.text = order.tglCheckout
+            tvOrderDate.text = order.tglCheckout.toUi(outPattern = shortHourPattern)
         }
         Order.Status.DIKEMAS -> {
             labelOrderDate.text = root.context.getString(R.string.order_date_paid)
-            tvOrderDate.text = order.tglBayar
+            tvOrderDate.text = order.tglBayar.toUi(outPattern = shortHourPattern)
         }
         Order.Status.BELUM_BAYAR -> {
-            tvOrderDate.text = order.tglCheckout
+            tvOrderDate.text = order.tglCheckout.toUi(outPattern = shortHourPattern)
         }
         else -> {
-            tvOrderDate.text = order.tglCheckout
+            tvOrderDate.text = order.tglCheckout.toUi(outPattern = shortHourPattern)
         }
     }
 
