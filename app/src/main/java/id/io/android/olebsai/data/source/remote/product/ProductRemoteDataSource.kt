@@ -2,6 +2,7 @@ package id.io.android.olebsai.data.source.remote.product
 
 import id.io.android.olebsai.data.model.request.product.CreateProductRequest
 import id.io.android.olebsai.data.model.request.product.DeleteImageRequest
+import id.io.android.olebsai.data.model.request.product.DeleteProductRequest
 import id.io.android.olebsai.data.model.request.product.RegisterImageRequest
 import id.io.android.olebsai.data.model.request.product.UpdateProductRequest
 import id.io.android.olebsai.data.model.response.product.CategoryListResponse
@@ -76,5 +77,9 @@ class ProductRemoteDataSource @Inject constructor(private val api: ProductServic
 
     suspend fun getProductDetail(productId: String): ProductResponse {
         return call { api.getProductDetail(productId).data }
+    }
+
+    suspend fun deleteProduct(productId: String): Any {
+        return call { api.deleteProduct(DeleteProductRequest(productId)) }
     }
 }

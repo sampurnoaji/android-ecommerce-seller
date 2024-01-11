@@ -74,4 +74,8 @@ class ProductRepositoryImpl @Inject constructor(
     override suspend fun getProductDetail(productId: String): LoadState<Product> {
         return map { remoteDataSource.getProductDetail(productId).toDomain() }
     }
+
+    override suspend fun deleteProduct(productId: String): LoadState<Any> {
+        return map { remoteDataSource.deleteProduct(productId) }
+    }
 }

@@ -41,6 +41,10 @@ class ProductDetailViewModel @Inject constructor(
     val deleteImageResult: LiveData<LoadState<Any>>
         get() = _deleteImageResult
 
+    private val _deleteProductResult = SingleLiveEvent<LoadState<Any>>()
+    val deleteProductResult: LiveData<LoadState<Any>>
+        get() = _deleteProductResult
+
     fun getProductApprovalDetail(approvalId: String) {
         _productDetailResult.value = LoadState.Loading
         viewModelScope.launch {
@@ -98,6 +102,13 @@ class ProductDetailViewModel @Inject constructor(
         _deleteImageResult.value = LoadState.Loading
         viewModelScope.launch {
             _deleteImageResult.value = productRepository.deleteImage(pictureId)
+        }
+    }
+
+    fun deleteProduct(productId: String) {
+        _deleteProductResult.value = LoadState.Loading
+        viewModelScope.launch {
+            _deleteProductResult.value = productRepository.deleteProduct(productId)
         }
     }
 }

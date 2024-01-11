@@ -9,6 +9,11 @@
         <item name="android:textAppearance">@style/Text.Heading4.Medium</item>
     </style>
 
+    <style name="Button.Small">
+        <item name="android:textAppearance">@style/Text.Heading6</item>
+        <item name="android:minHeight">32dp</item>
+    </style>
+
     <style name="ButtonOutlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:insetBottom">0dp</item>
         <item name="android:insetTop">0dp</item>

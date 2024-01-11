@@ -39,4 +39,17 @@ data class Product(
     }
 
     fun discount(): Int = 100 - (hargaPromo.toFloat() / hargaNormal * 100).roundToInt()
+
+    fun toUpdateProductParams() = UpdateProductParams(
+        deskripsi = deskripsi,
+        hargaNormal = hargaNormal,
+        hargaPromo = hargaPromo,
+        isHargaPromo = isHargaPromo,
+        kategoriId = kategoriId,
+        namaProduk = namaProduk,
+        qtyStock = qtyStock,
+        subKategoriId = subKategoriId,
+        produkId = produkId,
+        beratGram = beratGram,
+    )
 }

@@ -6,12 +6,14 @@
     <string name="menu_account">Akun</string>
 
     <string name="action">Aksi</string>
+    <string name="add">Tambah</string>
     <string name="cancel">Batal</string>
     <string name="close">Tutup</string>
     <string name="verify">Verifikasi</string>
     <string name="delete">Hapus</string>
     <string name="edit">Ubah</string>
     <string name="finish">Selesai</string>
+    <string name="minus">Kurangi</string>
     <string name="process">Proses</string>
     <string name="see">Lihat</string>
     <string name="send">Kirim</string>
@@ -26,6 +28,8 @@
     <string name="empty_data">Tidak ada data</string>
     <string name="x_other_item">%d item lainnya</string>
     <string name="zero">0</string>
+    <string name="active">Aktif</string>
+    <string name="inactive">Tidak Aktif</string>
 
     <string name="email">Email</string>
     <string name="name">Nama</string>
@@ -116,6 +120,8 @@
     <string name="product_approval_rejected">Produk Ditolak</string>
     <string name="product_approval_edit_waiting">Menunggu Update</string>
     <string name="product_create_success">Produk berhasil ditambahkan</string>
+    <string name="product_delete_confirmation_message">Apakah Anda yakin ingin menghapus produk ini?</string>
+    <string name="product_delete_success">Berhasil menghapus Produk</string>
     <string name="product_edit">Edit produk</string>
     <string name="product_edit_success">Produk berhasil diperbaharui</string>
     <string name="product_list">Produk Saya</string>
@@ -127,6 +133,7 @@
     <string name="product_name">Nama Produk</string>
     <string name="product_desc">Deskripsi</string>
     <string name="product_detail">Detail Produk</string>
+    <string name="product_discount">Diskon</string>
     <string name="product_category">Kategori</string>
     <string name="product_stock">Stok</string>
     <string name="product_stock_semicolon">Stok:</string>
@@ -134,8 +141,10 @@
     <string name="product_subcategory">Sub Kategori</string>
     <string name="product_price">Harga</string>
     <string name="product_price_promo">Harga Promo</string>
+    <string name="product_price_promo_status">Status Promo</string>
     <string name="product_price_promo_label">Aktifkan Harga Promo</string>
     <string name="product_search">Cari produk</string>
+    <string name="product_sold_count">Terjual</string>
     <string name="product_sold_statistic">Statistik Produk Terjual</string>
     <string name="product_weight">Berat (Dalam gram)</string>
     <string name="product_weight_helper">1 kg = 1000 gram</string>

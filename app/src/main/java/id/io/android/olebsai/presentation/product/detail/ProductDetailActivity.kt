@@ -14,6 +14,7 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.viewpager2.widget.ViewPager2
 import dagger.hilt.android.AndroidEntryPoint
+import id.io.android.olebsai.R
 import id.io.android.olebsai.R.string
 import id.io.android.olebsai.core.BaseActivity
 import id.io.android.olebsai.databinding.ActivityProductDetailBinding
@@ -21,6 +22,7 @@ import id.io.android.olebsai.domain.model.product.Product
 import id.io.android.olebsai.domain.model.product.Product.Picture
 import id.io.android.olebsai.presentation.product.image.ProductImagePreviewDialogFragment
 import id.io.android.olebsai.presentation.product.input.ProductInputActivity
+import id.io.android.olebsai.presentation.product.input.ProductInputViewModel
 import id.io.android.olebsai.util.toRupiah
 import id.io.android.olebsai.util.viewBinding
 
@@ -29,9 +31,11 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding, Product
 
     override val binding by viewBinding(ActivityProductDetailBinding::inflate)
     override val vm: ProductDetailViewModel by viewModels()
+    private val productInputViewModel: ProductInputViewModel by viewModels()
 
     private var productId = ""
     private var productStatus = ""
+    private var product: Product? = null
 
     private var images = listOf<Picture>()
     private val imagesAdapter by lazy { ProductImagePagerAdapter(imageListener) }
@@ -68,6 +72,22 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding, Product
         with(binding.toolbar) {
             imgBack.setOnClickListener { finish() }
             tvTitle.text = getString(string.product_detail)
+            if (productStatus == Product.ApprovalStatus.APPROVE.status) {
+                fabAction.apply {
+                    isVisible = true
+                    setImageResource(R.drawable.baseline_delete_outline_24)
+                    setOnClickListener {
+                        showInfoDialog(
+                            message = getString(string.product_delete_confirmation_message),
+                            positiveText = getString(string.cancel),
+                            negativeText = getString(string.delete),
+                            negativeAction = {
+                                vm.deleteProduct(productId)
+                            }
+                        )
+                    }
+                }
+            }
         }
 
         binding.btnEdit.setOnClickListener {
@@ -76,6 +96,17 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding, Product
 
         binding.btnAddImage.setOnClickListener {
             pickMedia.launch(PickVisualMediaRequest(ImageOnly))
+        }
+
+        binding.btnUpdateStock.setOnClickListener {
+            product?.let {
+                val stock = it.qtyStock
+                UpdateProductStockDialog(this, stock) { newStock ->
+                    productInputViewModel.updateProduct(
+                        it.copy(qtyStock = newStock).toUpdateProductParams()
+                    )
+                }.show()
+            }
         }
     }
 
@@ -125,8 +156,7 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding, Product
             if (productStatus == Product.ApprovalStatus.APPROVE.status) {
                 vm.getProductDetail(productId)
                 binding.btnEdit.isVisible = true
-            }
-            else {
+            } else {
                 vm.getProductApprovalDetail(productId)
                 binding.btnEdit.isGone = true
             }
@@ -137,6 +167,7 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding, Product
         vm.productDetailResult.observe(
             onLoading = {},
             onSuccess = { product ->
+                this.product = product
                 product?.let {
                     imagesCount = product.listPicture.size
                     inflateProduct(it)
@@ -170,6 +201,30 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding, Product
                 showInfoDialog(it?.message ?: getString(string.error))
             }
         )
+
+        vm.deleteProductResult.observe(
+            onLoading = {},
+            onSuccess = {
+                showInfoDialog(getString(string.product_delete_success),
+                    positiveAction = {
+                        setResult(Activity.RESULT_OK)
+                        finish()
+                    })
+            },
+            onError = {
+                showInfoDialog(it?.message ?: getString(string.error))
+            }
+        )
+
+        productInputViewModel.createProductResult.observe(
+            onLoading = {},
+            onSuccess = {
+                getProductDetail()
+            },
+            onError = {
+                showInfoDialog(it?.message.orEmpty())
+            }
+        )
     }
 
     private fun inflateProduct(product: Product) {
@@ -179,17 +234,14 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding, Product
             btnAddImage.isVisible = images.size < 3 && productId.isNotEmpty()
 
             tvName.text = product.namaProduk
-            if (product.isHargaPromo) {
-                tvPrice.text = product.hargaPromo.toRupiah()
-                tvOriginalPrice.text = product.hargaNormal.toRupiah()
-                tvPercentDiscount.text = "${product.discount()}%"
-            } else {
-                tvPrice.text = product.hargaNormal.toRupiah()
-                tvOriginalPrice.isGone = true
-                tvPercentDiscount.isGone = true
-            }
+            tvPrice.text = product.hargaPromo.toRupiah()
+            tvOriginalPrice.text = product.hargaNormal.toRupiah()
+            tvPercentDiscount.text = "${product.discount()}%"
+            tvPromoStatus.text =
+                if (product.isHargaPromo) getString(string.active)
+                else getString(string.inactive)
             tvStock.text = product.qtyStock.toString()
-            tvSoldCount.text = "Terjual ${product.qtyTerjual}"
+            tvSoldCount.text = product.qtyTerjual.toString()
 
             tvShopName.text = product.namaToko
             tvCategory.text = product.namaKategori

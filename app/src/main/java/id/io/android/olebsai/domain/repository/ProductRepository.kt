@@ -27,4 +27,5 @@ interface ProductRepository {
     suspend fun getProductApprovalDetail(approvalId: String): LoadState<Product>
     suspend fun getAllProduct(tokoId: String): LoadState<List<Product>>
     suspend fun getProductDetail(productId: String): LoadState<Product>
+    suspend fun deleteProduct(productId: String): LoadState<Any>
 }
