@@ -81,6 +81,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
     }
 
     private fun setupActionView() {
+        with (binding.root) {
+            setOnRefreshListener {
+                shopViewModel.getShopDetail()
+                isRefreshing = false
+            }
+        }
+
         binding.imgLogout.setOnClickListener {
             showLogoutDialog()
         }
@@ -92,10 +99,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
 
     private fun setupDashBoardCard() {
         with(binding.sectionOrder) {
-            this.tvOrderNew.text = "3"
-            this.tvOrderProcess.text = "4"
-            this.tvOrderComplain.text = "1"
-            this.tvOrderFinish.text = "11"
+            this.tvOrderNew.text = "0"
+            this.tvOrderProcess.text = "0"
+            this.tvOrderComplain.text = "0"
+            this.tvOrderFinish.text = "0"
         }
     }
 
@@ -151,13 +158,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
 
     private fun setProductChartData() {
         val soldProducts: Map<String, Int> = mapOf(
-            "1 Mei 2020" to 14,
-            "2 Mei 2020" to 2,
-            "3 Mei 2020" to 52,
-            "4 Mei 2020" to 29,
-            "5 Mei 2020" to 21,
-            "6 Mei 2020" to 22,
-            "7 Mei 2020" to 120,
+            "1 Mei 2024" to 0,
+            "2 Mei 2024" to 0,
+            "3 Mei 2024" to 0,
+            "4 Mei 2024" to 0,
+            "5 Mei 2024" to 0,
+            "6 Mei 2024" to 0,
+            "7 Mei 2024" to 0,
         )
 
         with(binding.sectionChart.productChart) {

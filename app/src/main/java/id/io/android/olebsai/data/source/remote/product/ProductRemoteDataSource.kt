@@ -55,12 +55,12 @@ class ProductRemoteDataSource @Inject constructor(private val api: ProductServic
         return call { api.deleteImage(DeleteImageRequest(pictureId)) }
     }
 
-    suspend fun createProduct(request: CreateProductRequest): Any {
-        return call { api.createProduct(request) }
+    suspend fun createProduct(request: CreateProductRequest): String {
+        return call { api.createProduct(request).message.orEmpty() }
     }
 
-    suspend fun updateProduct(request: UpdateProductRequest): Any {
-        return call { api.updateProduct(request) }
+    suspend fun updateProduct(request: UpdateProductRequest): String {
+        return call { api.updateProduct(request).message.orEmpty() }
     }
 
     suspend fun getAllProductApproval(tokoId: String): List<ProductResponse> {

@@ -27,11 +27,11 @@ class ProductRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun createProduct(createProductParams: CreateProductParams): LoadState<Any> {
+    override suspend fun createProduct(createProductParams: CreateProductParams): LoadState<String> {
         return map { remoteDataSource.createProduct(createProductParams.toRequest()) }
     }
 
-    override suspend fun updateProduct(updateProductParams: UpdateProductParams): LoadState<Any> {
+    override suspend fun updateProduct(updateProductParams: UpdateProductParams): LoadState<String> {
         return map { remoteDataSource.updateProduct(updateProductParams.toRequest()) }
     }
 

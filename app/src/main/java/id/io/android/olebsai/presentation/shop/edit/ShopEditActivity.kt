@@ -188,6 +188,39 @@ class ShopEditActivity : BaseActivity<ActivityShopEditBinding, ShopEditViewModel
                 return
             }
 
+            val bank = etBank.text
+            if (bank.isNullOrBlank()) {
+                showInfoDialog(
+                    getString(
+                        R.string.form_fill_x,
+                        getString(R.string.bank_name)
+                    )
+                )
+                return
+            }
+
+            val bankAccountNumber = etBankAccountNumber.text
+            if (bankAccountNumber.isNullOrBlank()) {
+                showInfoDialog(
+                    getString(
+                        R.string.form_fill_x,
+                        getString(R.string.bank_account_number)
+                    )
+                )
+                return
+            }
+
+            val bankAccountName = etBankAccountName.text
+            if (bankAccountName.isNullOrBlank()) {
+                showInfoDialog(
+                    getString(
+                        R.string.form_fill_x,
+                        getString(R.string.bank_account_name)
+                    )
+                )
+                return
+            }
+
             shop?.let { shop ->
                 vm.editShop(
                     shop.copy(
@@ -195,7 +228,10 @@ class ShopEditActivity : BaseActivity<ActivityShopEditBinding, ShopEditViewModel
                         note = note.toString(),
                         address = address.toString(),
                         postalCode = postalCode.toString(),
-                        couriers = courierListAdapter.currentList.filter { it.isSelected }
+                        couriers = courierListAdapter.currentList.filter { it.isSelected },
+                        bank = bank.toString(),
+                        noRekening = bankAccountNumber.toString(),
+                        namaPemilikRekening = bankAccountName.toString(),
                     )
                 )
             }

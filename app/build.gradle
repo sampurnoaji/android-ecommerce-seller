@@ -71,6 +71,7 @@ dependencies {
     def swiperefreshlayout = "1.1.0"
     def coil = "2.0.0-rc03"
     def chart = "v3.1.0"
+    def paging = "3.1.1"
 
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.6.0'
@@ -86,6 +87,7 @@ dependencies {
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayout")
     implementation("io.coil-kt:coil:$coil")
     implementation "com.github.PhilJay:MPAndroidChart:$chart"
+    implementation "androidx.paging:paging-runtime-ktx:$paging"
 
     // Dependency Injection
     implementation "com.google.dagger:hilt-android:$hilt"

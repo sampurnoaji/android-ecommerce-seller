@@ -20,6 +20,9 @@ data class ShopDetail(
     val subDistrictId: String,
     val status: String,
     val couriers: List<Courier>,
+    val bank: String,
+    val namaPemilikRekening: String,
+    val noRekening: String,
 ) : Parcelable {
 
     fun isApproved() = status == "AKTIF"

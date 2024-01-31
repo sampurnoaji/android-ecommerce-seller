@@ -14,7 +14,6 @@ import id.io.android.olebsai.databinding.ActivityOrderDetailBinding
 import id.io.android.olebsai.domain.model.order.Order
 import id.io.android.olebsai.domain.model.order.Order.Status
 import id.io.android.olebsai.domain.model.order.Order.Status.DIKEMAS
-import id.io.android.olebsai.domain.model.order.Order.Status.DITERIMA
 import id.io.android.olebsai.presentation.order.history.OrderViewModel
 import id.io.android.olebsai.presentation.order.history.setValue
 import id.io.android.olebsai.util.toUi
@@ -137,10 +136,6 @@ class OrderDetailActivity : BaseActivity<ActivityOrderDetailBinding, OrderViewMo
                             vm.deliverOrder(headerId, nomorResi)
                         }.show()
                     }
-                }
-
-                DITERIMA -> {
-                    text = getString(R.string.finish)
                 }
 
                 else -> {}

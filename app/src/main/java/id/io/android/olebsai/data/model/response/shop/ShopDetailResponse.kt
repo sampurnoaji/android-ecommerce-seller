@@ -36,6 +36,12 @@ data class ShopDetailResponse(
     val kecamatanId: String? = null,
     @field:Json(name = "kurir")
     val kurir: List<CouriersResponse.CourierResponse>? = null,
+    @field:Json(name = "bank")
+    val bank: String? = null,
+    @field:Json(name = "namaPemilikRekening")
+    val namaPemilikRekening: String? = null,
+    @field:Json(name = "noRekening")
+    val noRekening: String? = null,
 ) {
     fun toDomain() = ShopDetail(
         id = tokoId.orEmpty(),
@@ -59,6 +65,9 @@ data class ShopDetailResponse(
                 gambarLogo = it.gambarLogo.toString(),
                 kurirId = it.kurirId.orEmpty()
             )
-        }.orEmpty()
+        }.orEmpty(),
+        bank = bank.orEmpty(),
+        namaPemilikRekening = namaPemilikRekening.orEmpty(),
+        noRekening = noRekening.orEmpty(),
     )
 }

@@ -15,38 +15,65 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/tvShopName"
+            android:id="@+id/tvCustomerName"
             style="@style/Text.Heading4.SemiBold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toStartOf="@+id/tvOrderId"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="MULIA JASA" />
+            tools:text="Santoso Karto Raharjo Mangun Prawiro" />
+
+        <TextView
+            android:id="@+id/tvCustomerAddress"
+            style="@style/Text.Heading6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCustomerName"
+            tools:text="Jl Merdeka no 119 gang Macan Raya" />
+
+        <TextView
+            android:id="@+id/tvCustomerKecamatan"
+            style="@style/Text.Heading6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCustomerAddress"
+            tools:text="Nanggulan, Sukoharjo, Yogyakarta" />
+
+        <TextView
+            android:id="@+id/tvCustomerPhone"
+            style="@style/Text.Heading6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCustomerKecamatan"
+            tools:text="087712348945" />
 
         <TextView
             android:id="@+id/tvOrderId"
             style="@style/Text.Heading6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/tvShopName"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCustomerName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvShopName"
+            app:layout_constraintTop_toTopOf="@+id/tvCustomerName"
             tools:text="#1231modemd23mdoeimdeded" />
 
         <TextView
             android:id="@+id/labelOrderDate"
-            style="@style/Text.Heading6"
+            style="@style/Text.Heading5.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/order_date_checkout"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvShopName" />
+            app:layout_constraintTop_toBottomOf="@+id/tvCustomerPhone" />
 
         <TextView
             android:id="@+id/tvOrderDate"
-            style="@style/Text.Heading5.Medium"
+            style="@style/Text.Heading6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"

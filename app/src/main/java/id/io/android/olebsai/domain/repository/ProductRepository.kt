@@ -21,8 +21,8 @@ interface ProductRepository {
     ): LoadState<Any>
 
     suspend fun deleteImage(pictureId: String): LoadState<Any>
-    suspend fun createProduct(createProductParams: CreateProductParams): LoadState<Any>
-    suspend fun updateProduct(updateProductParams: UpdateProductParams): LoadState<Any>
+    suspend fun createProduct(createProductParams: CreateProductParams): LoadState<String>
+    suspend fun updateProduct(updateProductParams: UpdateProductParams): LoadState<String>
     suspend fun getAllProductApproval(tokoId: String): LoadState<List<Product>>
     suspend fun getProductApprovalDetail(approvalId: String): LoadState<Product>
     suspend fun getAllProduct(tokoId: String): LoadState<List<Product>>

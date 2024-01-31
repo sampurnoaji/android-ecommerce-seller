@@ -16,6 +16,9 @@ data class EditShopParams(
     val provinsiId: String,
     val tokoId: String,
     val couriers: List<Courier>,
+    val bank: String,
+    val namaPemilikRekening: String,
+    val noRekening: String,
 ) {
 
     fun toRequest() = EditShopRequest(
@@ -36,6 +39,9 @@ data class EditShopParams(
                 namaKurir = it.namaKurir,
                 kodeKurir = it.kodeKurir,
             )
-        }
+        },
+        bank = bank,
+        namaPemilikRekening = namaPemilikRekening,
+        noRekening = noRekening,
     )
 }

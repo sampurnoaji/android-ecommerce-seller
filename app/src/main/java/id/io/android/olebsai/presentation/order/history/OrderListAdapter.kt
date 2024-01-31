@@ -2,6 +2,7 @@ package id.io.android.olebsai.presentation.order.history
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -52,22 +53,30 @@ class OrderListAdapter(private val listener: Listener) :
 }
 
 fun ItemOrderBinding.setValue(order: Order) {
-    tvShopName.text = order.namaToko
+    tvCustomerName.text = order.customer.name
+    tvCustomerAddress.text = order.customer.address
+    tvCustomerKecamatan.text =
+        order.customer.kecamatan + ", " + order.customer.kota + ", " + order.customer.propinsi
+    tvCustomerPhone.text = order.customer.phone
     tvOrderId.text = "#${order.nomorPesanan}"
     tvStatus.text = order.status.status
 
     when (order.status) {
         Order.Status.SELESAI -> {
             tvStatus.setBackgroundResource(R.drawable.text_chip_green)
+            tvStatus.setTextColor(ContextCompat.getColor(root.context, R.color.green_50))
             tvOrderDate.text = order.tglCheckout.toUi(outPattern = shortHourPattern)
         }
+
         Order.Status.DIKEMAS -> {
             labelOrderDate.text = root.context.getString(R.string.order_date_paid)
             tvOrderDate.text = order.tglBayar.toUi(outPattern = shortHourPattern)
         }
+
         Order.Status.BELUM_BAYAR -> {
             tvOrderDate.text = order.tglCheckout.toUi(outPattern = shortHourPattern)
         }
+
         else -> {
             tvOrderDate.text = order.tglCheckout.toUi(outPattern = shortHourPattern)
         }

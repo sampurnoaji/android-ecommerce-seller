@@ -34,14 +34,15 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilOtp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginHorizontal="40dp"
         android:layout_marginTop="56dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etOtp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:digits="1234567890"
             android:inputType="number"
@@ -50,7 +51,8 @@
             android:minWidth="220dp"
             android:singleLine="true"
             android:textAlignment="center"
-            android:textSize="32sp" />
+            android:textSize="32sp"
+            tools:text="123456" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView

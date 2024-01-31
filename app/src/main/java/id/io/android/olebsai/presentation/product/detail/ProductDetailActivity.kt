@@ -220,6 +220,7 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding, Product
             onLoading = {},
             onSuccess = {
                 getProductDetail()
+                showInfoDialog(it ?: getString(string.product_edit_success))
             },
             onError = {
                 showInfoDialog(it?.message.orEmpty())

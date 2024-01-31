@@ -2,10 +2,12 @@ package id.io.android.olebsai.data.model.response.order
 
 
 import com.squareup.moshi.Json
+import id.io.android.olebsai.domain.model.order.Customer
 import id.io.android.olebsai.domain.model.order.Order
 import id.io.android.olebsai.domain.model.order.Order.Status.BELUM_BAYAR
 import id.io.android.olebsai.domain.model.order.Order.Status.DIKEMAS
 import id.io.android.olebsai.domain.model.order.Order.Status.DIKIRIM
+import id.io.android.olebsai.domain.model.order.Order.Status.DITERIMA
 import id.io.android.olebsai.domain.model.order.Order.Status.SELESAI
 import id.io.android.olebsai.domain.model.order.Order.Status.UNDEFINED
 
@@ -42,6 +44,20 @@ data class OrderResponse(
     val totalBayar: Long? = null,
     @field:Json(name = "nomorPesanan")
     val nomorPesanan: String? = null,
+    @field:Json(name = "namaBuyer")
+    val namaBuyer: String? = null,
+    @field:Json(name = "alamatBuyer")
+    val alamatBuyer: String? = null,
+    @field:Json(name = "kecamatanBuyer")
+    val kecamatanBuyer: String? = null,
+    @field:Json(name = "kotaBuyer")
+    val kotaBuyer: String? = null,
+    @field:Json(name = "propinsiBuyer")
+    val propinsiBuyer: String? = null,
+    @field:Json(name = "kodePosBuyer")
+    val kodePosBuyer: String? = null,
+    @field:Json(name = "nomorHpBuyer")
+    val nomorHpBuyer: String? = null,
 ) {
     fun toDomain() = Order(
         administrasi = administrasi ?: 0L,
@@ -58,6 +74,7 @@ data class OrderResponse(
             "BELUM BAYAR" -> BELUM_BAYAR
             "DIKEMAS" -> DIKEMAS
             "DIKIRIM" -> DIKIRIM
+            "DITERIMA" -> DITERIMA
             "SELESAI" -> SELESAI
             else -> UNDEFINED
         },
@@ -66,5 +83,14 @@ data class OrderResponse(
         tokoId = tokoId.orEmpty(),
         totalBayar = totalBayar ?: 0L,
         nomorPesanan = nomorPesanan.orEmpty(),
+        customer = Customer(
+            name = namaBuyer.orEmpty(),
+            address = alamatBuyer.orEmpty(),
+            kecamatan = kecamatanBuyer.orEmpty(),
+            kota = kotaBuyer.orEmpty(),
+            propinsi = propinsiBuyer.orEmpty(),
+            kodePos = kodePosBuyer.orEmpty(),
+            phone = nomorHpBuyer.orEmpty(),
+        )
     )
 }

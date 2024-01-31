@@ -21,6 +21,7 @@ data class Order(
     val tokoId: String,
     val totalBayar: Long,
     val nomorPesanan: String,
+    val customer: Customer,
 ) : Parcelable {
     enum class Status(val status: String) {
         BELUM_BAYAR("BELUM BAYAR"),

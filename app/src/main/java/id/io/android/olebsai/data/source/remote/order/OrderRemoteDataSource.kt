@@ -13,8 +13,16 @@ class OrderRemoteDataSource @Inject constructor(private val service: OrderServic
         return call { service.getActiveOrders().data.data }
     }
 
-    suspend fun getDoneOrders(): List<OrderResponse> {
-        return call { service.getDoneOrders().data.data }
+    suspend fun getDoneOrders(
+        page: Int,
+        size: Int,
+    ): List<OrderResponse> {
+        return call {
+            service.getDoneOrders(
+                page = page,
+                size = size,
+            ).data.data
+        }
     }
 
     suspend fun getOrderDetail(headerId: String): OrderDetailResponse {

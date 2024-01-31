@@ -32,7 +32,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
 
     private fun setupActionView() {
         with(binding) {
-            imgBack.setOnClickListener { onBackPressed() }
+            imgBack.setOnClickListener { finish() }
 
             etEmail.doOnTextChanged { text, _, _, _ ->
                 vm.onEmailChanged(text.toString())
@@ -72,7 +72,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
                 Dialog(
                     context = this,
                     cancelable = false,
-                    message = "Registrasi berhasil",
+                    message = it ?: getString(R.string.register_success),
                     positiveButtonText = getString(R.string.login),
                     positiveAction = {
                         finish()
@@ -81,7 +81,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
             onError = {
                 Dialog(
                     context = this,
-                    message = "Registrasi gagal",
+                    message = it?.message ?: getString(R.string.register_failed),
                     positiveButtonText = getString(android.R.string.ok)
                 ).show()
             },

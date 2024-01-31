@@ -78,6 +78,7 @@
     <string name="login_error_form_invalid">Username/Password salah</string>
 
     <string name="register">Daftar</string>
+    <string name="register_failed">Registrasi Gagal</string>
     <string name="register_underline"><u>Daftar</u></string>
     <string name="register_header">Selamat datang di Oleb Sai!</string>
     <string name="register_desc">Hai, nampaknya kamu pengguna baru. Kamu dapat menggunakan aplikasi setelah mendaftar.</string>
@@ -162,4 +163,8 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+
+    <string name="bank_account_name">Nama Pemilik Rekening</string>
+    <string name="bank_account_number">Nomor Rekening</string>
+    <string name="bank_name">Nama Bank</string>
 </resources>

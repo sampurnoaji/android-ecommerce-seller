@@ -8,6 +8,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface OrderService {
 
@@ -15,7 +16,10 @@ interface OrderService {
     suspend fun getActiveOrders(): BaseResponse<ActiveOrderResponse>
 
     @GET("v1/pesanan/get-histori-pesanan-seller")
-    suspend fun getDoneOrders(): BaseResponse<ActiveOrderResponse>
+    suspend fun getDoneOrders(
+        @Query("pageNumber") page: Int,
+        @Query("pageSize") size: Int,
+    ): BaseResponse<ActiveOrderResponse>
 
     @GET("/v1/pesanan/get-list-pesanan-by-header/{headerId}")
     suspend fun getOrderDetail(

@@ -30,6 +30,12 @@ data class EditShopRequest(
     val tokoId: String,
     @field:Json(name = "kurir")
     val kurirs: List<Kurir>,
+    @field:Json(name = "bank")
+    val bank: String,
+    @field:Json(name = "namaPemilikRekening")
+    val namaPemilikRekening: String,
+    @field:Json(name = "noRekening")
+    val noRekening: String,
 ) {
     data class Kurir(
         @field:Json(name = "kodeKurir")

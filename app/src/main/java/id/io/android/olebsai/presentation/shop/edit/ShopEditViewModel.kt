@@ -50,7 +50,10 @@ class ShopEditViewModel @Inject constructor(
                 tokoId = shop.id,
                 kecamatan = shop.subDistrict,
                 kecamatanId = shop.subDistrictId,
-                couriers = shop.couriers
+                couriers = shop.couriers,
+                bank = shop.bank,
+                noRekening = shop.noRekening,
+                namaPemilikRekening = shop.namaPemilikRekening,
             ))
         }
     }

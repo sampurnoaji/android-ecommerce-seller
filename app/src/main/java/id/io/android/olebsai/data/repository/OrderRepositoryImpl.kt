@@ -1,5 +1,6 @@
 package id.io.android.olebsai.data.repository
 
+import id.io.android.olebsai.data.source.remote.order.OrderPagingSource
 import id.io.android.olebsai.data.source.remote.order.OrderRemoteDataSource
 import id.io.android.olebsai.domain.model.order.Order
 import id.io.android.olebsai.domain.model.order.OrderDetail
@@ -15,8 +16,8 @@ class OrderRepositoryImpl @Inject constructor(private val remoteDataSource: Orde
         return map { remoteDataSource.getActiveOrders().map { it.toDomain() } }
     }
 
-    override suspend fun getDoneOrders(): LoadState<List<Order>> {
-        return map { remoteDataSource.getDoneOrders().map { it.toDomain() } }
+    override fun getOrderPagingSource(): OrderPagingSource {
+        return OrderPagingSource(remoteDataSource)
     }
 
     override suspend fun getOrderDetail(headerId: String): LoadState<OrderDetail> {

@@ -34,8 +34,8 @@ class ProductInputViewModel @Inject constructor(
     val subCategoryListResult: LiveData<LoadState<List<SubCategory>>>
         get() = _subCategoryListResult
 
-    private val _createProductResult = SingleLiveEvent<LoadState<Any>>()
-    val createProductResult: LiveData<LoadState<Any>>
+    private val _createProductResult = SingleLiveEvent<LoadState<String>>()
+    val createProductResult: LiveData<LoadState<String>>
         get() = _createProductResult
 
     fun getProductApprovalDetail(approvalId: String) {
