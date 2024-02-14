@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="40dp"
-    tools:context="id.io.android.olebsai.presentation.user.login.LoginActivity">
+    tools:context="id.io.olebsai.presentation.user.login.LoginActivity">
 
     <TextView
         android:id="@+id/tvHeader"

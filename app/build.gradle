@@ -6,11 +6,18 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 
+def keyProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keyProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
+    namespace 'id.io.olebsai'
     compileSdk 33
 
     defaultConfig {
-        applicationId "id.io.android.seller"
+        applicationId "id.io.olebsai"
         minSdk 23
         targetSdk 33
         versionCode 1
@@ -19,10 +26,20 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            keyAlias keyProperties['keyAlias']
+            keyPassword keyProperties['keyPassword']
+            storeFile keyProperties['storeFile'] ? file(keyProperties['storeFile']) : null
+            storePassword keyProperties['storePassword']
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
@@ -51,7 +68,6 @@ android {
             buildConfigField "String", "API_BASE_URL", API_BASE_URL
         }
     }
-    namespace 'id.io.android.olebsai'
 }
 
 dependencies {

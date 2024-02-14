@@ -141,6 +141,7 @@
     <string name="product_stock_edit">Ubah Stok</string>
     <string name="product_subcategory">Sub Kategori</string>
     <string name="product_price">Harga</string>
+    <string name="product_price_edit">Ubah Harga</string>
     <string name="product_price_promo">Harga Promo</string>
     <string name="product_price_promo_status">Status Promo</string>
     <string name="product_price_promo_label">Aktifkan Harga Promo</string>

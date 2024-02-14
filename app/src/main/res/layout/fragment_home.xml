@@ -66,7 +66,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvUsername"
                     tools:text="PT Jamet Perkasa Sekali" />
 
-                <id.io.android.olebsai.component.StatusChipView
+                <id.io.olebsai.component.StatusChipView
                     android:id="@+id/shopStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

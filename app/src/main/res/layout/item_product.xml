@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="@+id/imgProduct"
         tools:text="Kertas kado nastar" />
 
-    <id.io.android.olebsai.component.StatusChipView
+    <id.io.olebsai.component.StatusChipView
         android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
