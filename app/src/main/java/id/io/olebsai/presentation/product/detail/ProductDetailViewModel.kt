@@ -77,9 +77,9 @@ class ProductDetailViewModel @Inject constructor(
                     }
 
                     val fileExtension = context.contentResolver.getType(uri).orEmpty()
-                    val requestBody = file.asRequestBody("image/*".toMediaTypeOrNull())
+                    val requestBody = file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
                     val imagePart =
-                        MultipartBody.Part.createFormData("images", file.name, requestBody)
+                        MultipartBody.Part.createFormData("images", null, requestBody)
                     val uploadResult = withContext(Dispatchers.IO) {
                         productRepository.uploadImage(
                             productId,

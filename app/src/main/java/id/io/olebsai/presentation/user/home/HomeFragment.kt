@@ -7,6 +7,7 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.MarginPageTransformer
@@ -38,15 +39,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
 
     override val binding by viewBinding(FragmentHomeBinding::bind)
     override val vm: HomeViewModel by viewModels()
-    private val shopViewModel: ShopViewModel by viewModels()
+    private val shopViewModel: ShopViewModel by activityViewModels()
 
     private var carouselJob: Job? = null
     private val bannerListAdapter by lazy { BannerListAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        shopViewModel.getShopDetail()
-
         observeViewModel()
 
         setupActionView()

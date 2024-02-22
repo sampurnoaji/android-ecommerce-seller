@@ -25,5 +25,7 @@ data class ShopDetail(
     val noRekening: String,
 ) : Parcelable {
 
-    fun isApproved() = status == "AKTIF"
+    fun isApproved() = status.lowercase() == "AKTIF".lowercase()
+
+    fun isStatusRegistrasi() = status.lowercase() == "REGISTRASI".lowercase()
 }

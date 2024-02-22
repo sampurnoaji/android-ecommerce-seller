@@ -286,7 +286,7 @@ class ProductInputActivity : BaseActivity<ActivityProductInputBinding, ProductIn
                         qtyStock = stock.toString().toIntOrNull() ?: 0,
                         subKategoriId = selectedSubCategory?.subKategoriId.orEmpty(),
                         produkId = productId,
-                        beratGram = weight.toString().toIntOrNull() ?: 0,
+                        beratGram = weight.toString().replace(".", "").toIntOrNull() ?: 0,
                     )
                 )
             } else {
@@ -300,7 +300,7 @@ class ProductInputActivity : BaseActivity<ActivityProductInputBinding, ProductIn
                         qtyStock = stock.toString().toIntOrNull() ?: 0,
                         subKategoriId = selectedSubCategory?.subKategoriId.orEmpty(),
                         tokoId = shopViewModel.getShopCached()?.id.orEmpty(),
-                        beratGram = weight.toString().toIntOrNull() ?: 0,
+                        beratGram = weight.toString().replace(".", "").toIntOrNull() ?: 0,
                     )
                 )
             }
@@ -315,3 +315,5 @@ class ProductInputActivity : BaseActivity<ActivityProductInputBinding, ProductIn
         selectedSubCategory = subCategories.firstOrNull { it.subKategoriId == subCategoryId }
     }
 }
+
+//https://image.olebsai.com/api/upload-image/{idProduct}

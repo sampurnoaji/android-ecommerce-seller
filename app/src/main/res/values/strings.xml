@@ -78,6 +78,7 @@
     <string name="login_error_form_invalid">Username/Password salah</string>
 
     <string name="register">Daftar</string>
+    <string name="register_email_helper">Contoh: email@example.com</string>
     <string name="register_failed">Registrasi Gagal</string>
     <string name="register_underline"><u>Daftar</u></string>
     <string name="register_header">Selamat datang di Oleb Sai!</string>
@@ -104,6 +105,7 @@
     <string name="shop_note">Keterangan</string>
     <string name="shop_status_registration">Dalam Peninjauan</string>
     <string name="shop_status_registration_info">Toko Anda masih berstatus Dalam Peninjauan</string>
+    <string name="shop_status_registration_info_action">Lengkapi Profil toko Anda dan tunggu persetujuan admin Olebsai</string>
 
     <string name="address">Alamat</string>
     <string name="address_full">Alamat Lengkap</string>

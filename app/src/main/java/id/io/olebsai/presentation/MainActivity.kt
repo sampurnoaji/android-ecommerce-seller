@@ -13,6 +13,7 @@ import id.io.olebsai.core.BaseActivity
 import id.io.olebsai.databinding.ActivityMainBinding
 import id.io.olebsai.presentation.order.history.OrderFragment
 import id.io.olebsai.presentation.product.list.ProductFragment
+import id.io.olebsai.presentation.shop.ShopViewModel
 import id.io.olebsai.presentation.user.home.HomeFragment
 import id.io.olebsai.presentation.user.landing.LandingActivity
 import id.io.olebsai.presentation.user.login.LoginActivity
@@ -23,6 +24,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override val binding: ActivityMainBinding by viewBinding(ActivityMainBinding::inflate)
     override val vm: MainViewModel by viewModels()
+    private val shopViewModel: ShopViewModel by viewModels()
 
     private val homeFragment by lazy { HomeFragment() }
     private val orderFragment by lazy { OrderFragment() }
@@ -44,6 +46,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         super.onCreate(savedInstanceState)
         handleRedirectPageNavigation()
         setupFragments()
+
+        shopViewModel.getShopDetail()
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -102,5 +106,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
+    }
+
+    internal fun navigateToHome() {
+        binding.bottomNavigation.selectedItemId = R.id.menuHome
     }
 }

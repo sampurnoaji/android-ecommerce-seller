@@ -6,6 +6,7 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
@@ -14,6 +15,7 @@ import id.io.olebsai.R.string
 import id.io.olebsai.core.BaseFragment
 import id.io.olebsai.databinding.FragmentProductBinding
 import id.io.olebsai.domain.model.product.Product
+import id.io.olebsai.presentation.MainActivity
 import id.io.olebsai.presentation.product.detail.ProductDetailActivity
 import id.io.olebsai.presentation.product.input.ProductInputActivity
 import id.io.olebsai.presentation.shop.ShopViewModel
@@ -26,7 +28,7 @@ class ProductFragment :
 
     override val binding: FragmentProductBinding by viewBinding(FragmentProductBinding::bind)
     override val vm: ProductViewModel by viewModels()
-    private val shopViewModel: ShopViewModel by viewModels()
+    private val shopViewModel: ShopViewModel by activityViewModels()
 
     private val productListAdapter by lazy {
         ProductListAdapter(
@@ -54,6 +56,16 @@ class ProductFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        shopViewModel.getShopCached()?.let { shop ->
+            if (shop.isStatusRegistrasi()) {
+                showInfoDialog(
+                    message = getString(string.shop_status_registration_info_action),
+                    onCloseDialog = { (activity as MainActivity).navigateToHome() }
+                )
+                return
+            }
+        }
+
         vm.getAllProduct()
         setupView()
         setupActionView()
