@@ -78,20 +78,35 @@
                             tools:text="Baju Batik Anyam" />
                     </TableRow>
 
-                    <TableRow>
+                    <TableRow android:layout_gravity="center_vertical">
 
                         <TextView
+                            android:layout_gravity="center_vertical"
                             android:text="@string/product_price"
                             android:textColor="@color/black" />
 
-                        <TextView
-                            android:id="@+id/tvOriginalPrice"
-                            style="@style/Text.Heading4.Medium"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:paddingHorizontal="16dp"
-                            android:paddingVertical="4dp"
-                            tools:text="Rp 100.000" />
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/tvOriginalPrice"
+                                style="@style/Text.Heading4.Medium"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:paddingHorizontal="16dp"
+                                android:paddingVertical="4dp"
+                                tools:text="Rp 100.000" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnUpdatePrice"
+                                style="@style/Button.Small"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="4dp"
+                                android:text="@string/product_price_edit" />
+                        </LinearLayout>
                     </TableRow>
 
                     <TableRow>
@@ -117,29 +132,16 @@
                             android:text="@string/product_price_promo_status"
                             android:textColor="@color/black" />
 
-                        <LinearLayout
+                        <TextView
+                            android:id="@+id/tvPromoStatus"
+                            style="@style/Text.Heading4.SemiBold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center_vertical">
-
-                            <TextView
-                                android:id="@+id/tvPromoStatus"
-                                style="@style/Text.Heading4.SemiBold"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:paddingHorizontal="16dp"
-                                android:paddingVertical="4dp"
-                                android:textColor="@color/green_primary"
-                                tools:text="Tidak aktif" />
-
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/btnUpdatePrice"
-                                style="@style/Button.Small"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginVertical="4dp"
-                                android:text="@string/product_price_edit" />
-                        </LinearLayout>
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="4dp"
+                            android:textColor="@color/green_primary"
+                            tools:text="Tidak aktif" />
                     </TableRow>
 
                     <TableRow>
